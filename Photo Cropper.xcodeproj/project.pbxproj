@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14EF18FC1E22C716007C8C4D /* CropperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EF18FB1E22C716007C8C4D /* CropperViewController.swift */; };
 		60837A5F1E229CF100E0892D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60837A5E1E229CF100E0892D /* AppDelegate.swift */; };
 		60837A641E229CF100E0892D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60837A621E229CF100E0892D /* Main.storyboard */; };
 		60837A661E229CF100E0892D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60837A651E229CF100E0892D /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14EF18FB1E22C716007C8C4D /* CropperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropperViewController.swift; sourceTree = "<group>"; };
 		60837A5B1E229CF100E0892D /* Photo Cropper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photo Cropper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60837A5E1E229CF100E0892D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60837A631E229CF100E0892D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 		60837A7F1E229E0600E0892D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				14EF18FB1E22C716007C8C4D /* CropperViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -174,8 +177,7 @@
 				TargetAttributes = {
 					60837A5A1E229CF100E0892D = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 76RXYZCS9Y;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					60837A6E1E229CF100E0892D = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -235,6 +237,7 @@
 				60837A5F1E229CF100E0892D /* AppDelegate.swift in Sources */,
 				60837A831E22A1B100E0892D /* MediaResourceManager.swift in Sources */,
 				60837A851E22A5AA00E0892D /* LivePhotoPlayer.swift in Sources */,
+				14EF18FC1E22C716007C8C4D /* CropperViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,7 +374,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 76RXYZCS9Y;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Photo Cropper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.radchencko.Photo-Cropper";
@@ -384,7 +387,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 76RXYZCS9Y;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Photo Cropper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.radchencko.Photo-Cropper";
