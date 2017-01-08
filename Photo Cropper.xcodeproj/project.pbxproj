@@ -18,6 +18,7 @@
 		60837A851E22A5AA00E0892D /* LivePhotoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60837A841E22A5AA00E0892D /* LivePhotoPlayer.swift */; };
 		60837A871E22B5E500E0892D /* LibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60837A861E22B5E500E0892D /* LibraryManager.swift */; };
 		60837A891E22BB4A00E0892D /* SharingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60837A881E22BB4A00E0892D /* SharingManager.swift */; };
+		60837A8C1E22C0B000E0892D /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60837A8B1E22C0B000E0892D /* CustomSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		60837A841E22A5AA00E0892D /* LivePhotoPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivePhotoPlayer.swift; sourceTree = "<group>"; };
 		60837A861E22B5E500E0892D /* LibraryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryManager.swift; sourceTree = "<group>"; };
 		60837A881E22BB4A00E0892D /* SharingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingManager.swift; sourceTree = "<group>"; };
+		60837A8B1E22C0B000E0892D /* CustomSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 		60837A5D1E229CF100E0892D /* Photo Cropper */ = {
 			isa = PBXGroup;
 			children = (
+				60837A8A1E22C09A00E0892D /* Views */,
 				60837A7E1E229DF300E0892D /* Helpers */,
 				60837A7F1E229E0600E0892D /* ViewControllers */,
 				60837A5E1E229CF100E0892D /* AppDelegate.swift */,
@@ -125,6 +128,14 @@
 				14EF18FB1E22C716007C8C4D /* CropperViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		60837A8A1E22C09A00E0892D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				60837A8B1E22C0B000E0892D /* CustomSlider.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				60837A871E22B5E500E0892D /* LibraryManager.swift in Sources */,
+				60837A8C1E22C0B000E0892D /* CustomSlider.swift in Sources */,
 				60837A811E229E5A00E0892D /* LivePhotoPickerController.swift in Sources */,
 				60837A891E22BB4A00E0892D /* SharingManager.swift in Sources */,
 				60837A5F1E229CF100E0892D /* AppDelegate.swift in Sources */,
