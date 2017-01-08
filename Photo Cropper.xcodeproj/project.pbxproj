@@ -14,6 +14,7 @@
 		60837A741E229CF100E0892D /* Photo_CropperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60837A731E229CF100E0892D /* Photo_CropperTests.swift */; };
 		60837A811E229E5A00E0892D /* LivePhotoPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60837A801E229E5A00E0892D /* LivePhotoPickerController.swift */; };
 		60837A831E22A1B100E0892D /* MediaResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60837A821E22A1B100E0892D /* MediaResourceManager.swift */; };
+		60837A851E22A5AA00E0892D /* LivePhotoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60837A841E22A5AA00E0892D /* LivePhotoPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		60837A751E229CF100E0892D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60837A801E229E5A00E0892D /* LivePhotoPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivePhotoPickerController.swift; sourceTree = "<group>"; };
 		60837A821E22A1B100E0892D /* MediaResourceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaResourceManager.swift; sourceTree = "<group>"; };
+		60837A841E22A5AA00E0892D /* LivePhotoPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivePhotoPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			children = (
 				60837A801E229E5A00E0892D /* LivePhotoPickerController.swift */,
 				60837A821E22A1B100E0892D /* MediaResourceManager.swift */,
+				60837A841E22A5AA00E0892D /* LivePhotoPlayer.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				60837A811E229E5A00E0892D /* LivePhotoPickerController.swift in Sources */,
 				60837A5F1E229CF100E0892D /* AppDelegate.swift in Sources */,
 				60837A831E22A1B100E0892D /* MediaResourceManager.swift in Sources */,
+				60837A851E22A5AA00E0892D /* LivePhotoPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +434,7 @@
 				60837A7A1E229CF100E0892D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		60837A7B1E229CF100E0892D /* Build configuration list for PBXNativeTarget "Photo CropperTests" */ = {
 			isa = XCConfigurationList;
@@ -438,6 +443,7 @@
 				60837A7D1E229CF100E0892D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
