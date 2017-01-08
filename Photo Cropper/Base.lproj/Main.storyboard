@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1SU-qc-gbK">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,47 +23,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="247-3G-Ztv">
-                                <rect key="frame" x="8" y="69.5" width="304" height="341"/>
+                                <rect key="frame" x="8" y="80" width="304" height="341"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vAE-ew-Pv9" customClass="CustomSlider" customModule="Photo_Cropper" customModuleProvider="target">
-                                <rect key="frame" x="30" y="453" width="260" height="30"/>
+                                <rect key="frame" x="80" y="437" width="160" height="40"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="poE-jg-3vd"/>
+                                    <constraint firstAttribute="height" constant="40" id="poE-jg-3vd"/>
                                 </constraints>
                                 <connections>
                                     <action selector="actionSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="175-X6-ZEp"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cS7-aV-Tz7">
-                                <rect key="frame" x="264" y="23.5" width="40" height="30"/>
-                                <state key="normal" title="Share"/>
-                                <connections>
-                                    <action selector="actionDidTapShareButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h6k-gO-Cgk"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extractor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDR-wE-xsz">
-                                <rect key="frame" x="125" y="28" width="70" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vAE-ew-Pv9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="1LT-mM-KYq"/>
-                            <constraint firstItem="JDR-wE-xsz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7mW-vi-ysU"/>
-                            <constraint firstItem="vAE-ew-Pv9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="247-3G-Ztv" secondAttribute="bottom" constant="30" id="Cdh-1p-dpD"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vAE-ew-Pv9" secondAttribute="bottom" constant="85" id="XMv-HR-pV8"/>
-                            <constraint firstItem="cS7-aV-Tz7" firstAttribute="centerY" secondItem="JDR-wE-xsz" secondAttribute="centerY" id="YKy-YC-Crj"/>
+                            <constraint firstItem="vAE-ew-Pv9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LVS-vd-f2V"/>
+                            <constraint firstItem="247-3G-Ztv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="QAC-ex-SRv"/>
+                            <constraint firstItem="vAE-ew-Pv9" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="1/2" id="SMj-Jo-8WK"/>
+                            <constraint firstItem="vAE-ew-Pv9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="247-3G-Ztv" secondAttribute="bottom" constant="16" id="ZDO-aF-14G"/>
                             <constraint firstItem="247-3G-Ztv" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="ceQ-3A-Fvf"/>
-                            <constraint firstItem="JDR-wE-xsz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="neb-B5-t6a"/>
-                            <constraint firstAttribute="trailing" secondItem="cS7-aV-Tz7" secondAttribute="trailing" constant="16" id="r08-VR-V2y"/>
-                            <constraint firstItem="247-3G-Ztv" firstAttribute="top" secondItem="cS7-aV-Tz7" secondAttribute="bottom" constant="16" id="vma-Ub-qjL"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vAE-ew-Pv9" secondAttribute="bottom" priority="999" constant="100" id="ulQ-QN-XDl"/>
                             <constraint firstAttribute="trailing" secondItem="247-3G-Ztv" secondAttribute="trailing" constant="8" id="vtS-kP-EkJ"/>
                             <constraint firstItem="247-3G-Ztv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="yM7-Sa-VQJ"/>
-                            <constraint firstAttribute="trailing" secondItem="vAE-ew-Pv9" secondAttribute="trailing" constant="30" id="zdZ-QV-7h8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Extractor" id="zxY-W1-FjI">
@@ -76,7 +59,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1111.875" y="120.4225352112676"/>
+            <point key="canvasLocation" x="2109.375" y="120.4225352112676"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wb5-5g-nKi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1SU-qc-gbK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fCa-lQ-0qG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="MCr-Jh-zx2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AVf-Xa-oKe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1311" y="120"/>
         </scene>
     </scenes>
 </document>
