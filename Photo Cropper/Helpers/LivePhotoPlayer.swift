@@ -18,7 +18,7 @@ enum LivePhotoPlayerError: Error {
 protocol PlayerBehaviour {
     var videoUrl: URL {get set}
     var player: AVPlayer {get set}
-    var duration: CMTime? {get}
+    var duration: Double? {get}
     init(_ url: URL)
     func layer() -> AVPlayerLayer
     func move(to seconds: Double) throws
@@ -32,8 +32,8 @@ class LivePhotoPlayer: PlayerBehaviour {
         return AVPlayer(url: self.videoUrl)
     }()
     
-    var duration: CMTime? {
-        return player.currentItem?.asset.duration
+    var duration: Double? {
+        return player.currentItem?.asset.duration.seconds
     }
     
     fileprivate var imageGenerator: AVAssetImageGenerator? {
@@ -52,7 +52,7 @@ class LivePhotoPlayer: PlayerBehaviour {
     }
     
     func move(to seconds: Double) throws {
-        guard let duration = duration, duration.seconds >= seconds else {
+        guard let duration = duration, duration >= seconds else {
             throw LivePhotoPlayerError.wrongTime
         }
         let time = CMTime(seconds: seconds, preferredTimescale: 10)
