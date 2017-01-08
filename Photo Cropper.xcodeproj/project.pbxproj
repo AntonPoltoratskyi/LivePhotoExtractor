@@ -15,6 +15,7 @@
 		60837A811E229E5A00E0892D /* LivePhotoPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60837A801E229E5A00E0892D /* LivePhotoPickerController.swift */; };
 		60837A831E22A1B100E0892D /* MediaResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60837A821E22A1B100E0892D /* MediaResourceManager.swift */; };
 		60837A851E22A5AA00E0892D /* LivePhotoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60837A841E22A5AA00E0892D /* LivePhotoPlayer.swift */; };
+		60837A871E22B5E500E0892D /* LibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60837A861E22B5E500E0892D /* LibraryManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		60837A801E229E5A00E0892D /* LivePhotoPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivePhotoPickerController.swift; sourceTree = "<group>"; };
 		60837A821E22A1B100E0892D /* MediaResourceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaResourceManager.swift; sourceTree = "<group>"; };
 		60837A841E22A5AA00E0892D /* LivePhotoPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivePhotoPlayer.swift; sourceTree = "<group>"; };
+		60837A861E22B5E500E0892D /* LibraryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				60837A801E229E5A00E0892D /* LivePhotoPickerController.swift */,
 				60837A821E22A1B100E0892D /* MediaResourceManager.swift */,
 				60837A841E22A5AA00E0892D /* LivePhotoPlayer.swift */,
+				60837A861E22B5E500E0892D /* LibraryManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60837A871E22B5E500E0892D /* LibraryManager.swift in Sources */,
 				60837A811E229E5A00E0892D /* LivePhotoPickerController.swift in Sources */,
 				60837A5F1E229CF100E0892D /* AppDelegate.swift in Sources */,
 				60837A831E22A1B100E0892D /* MediaResourceManager.swift in Sources */,
