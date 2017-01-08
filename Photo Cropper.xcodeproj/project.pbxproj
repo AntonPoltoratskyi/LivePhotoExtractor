@@ -33,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		14EF18FB1E22C716007C8C4D /* CropperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropperViewController.swift; sourceTree = "<group>"; };
+		14EF18FE1E22CD6E007C8C4D /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		60837A5B1E229CF100E0892D /* Photo Cropper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photo Cropper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60837A5E1E229CF100E0892D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60837A631E229CF100E0892D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -68,12 +69,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14EF18FD1E22CD6E007C8C4D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				14EF18FE1E22CD6E007C8C4D /* Photos.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		60837A521E229CF100E0892D = {
 			isa = PBXGroup;
 			children = (
 				60837A5D1E229CF100E0892D /* Photo Cropper */,
 				60837A721E229CF100E0892D /* Photo CropperTests */,
 				60837A5C1E229CF100E0892D /* Products */,
+				14EF18FD1E22CD6E007C8C4D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

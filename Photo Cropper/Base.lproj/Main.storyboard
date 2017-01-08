@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gBV-b8-JeB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -7,14 +7,13 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Extractor-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="Photo_Cropper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="CropperViewController" customModule="Photo_Cropper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -23,54 +22,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fG5-e6-WLh">
-                                <rect key="frame" x="8" y="80" width="304" height="341"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="247-3G-Ztv">
+                                <rect key="frame" x="8" y="69.5" width="304" height="341"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vAE-ew-Pv9" customClass="CustomSlider" customModule="Photo_Cropper" customModuleProvider="target">
+                                <rect key="frame" x="30" y="453" width="260" height="30"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </imageView>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="qS9-hS-JrB">
-                                <rect key="frame" x="28" y="453" width="264" height="31"/>
-                            </slider>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="poE-jg-3vd"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="actionSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="175-X6-ZEp"/>
+                                </connections>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cS7-aV-Tz7">
+                                <rect key="frame" x="264" y="23.5" width="40" height="30"/>
+                                <state key="normal" title="Share"/>
+                                <connections>
+                                    <action selector="actionDidTapShareButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h6k-gO-Cgk"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extractor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDR-wE-xsz">
+                                <rect key="frame" x="125" y="28" width="70" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qS9-hS-JrB" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fG5-e6-WLh" secondAttribute="bottom" constant="32" id="4Pq-wc-tVn"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qS9-hS-JrB" secondAttribute="bottom" constant="85" id="9tK-26-NLe"/>
-                            <constraint firstItem="qS9-hS-JrB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="BWe-SD-6Ky"/>
-                            <constraint firstAttribute="trailing" secondItem="fG5-e6-WLh" secondAttribute="trailing" constant="8" id="BzN-AJ-r8v"/>
-                            <constraint firstItem="fG5-e6-WLh" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="Kkn-GT-iUz"/>
-                            <constraint firstItem="fG5-e6-WLh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="OlN-6v-yyO"/>
-                            <constraint firstItem="fG5-e6-WLh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="q2q-v3-cwu"/>
-                            <constraint firstAttribute="trailing" secondItem="qS9-hS-JrB" secondAttribute="trailing" constant="30" id="zXp-LU-7BC"/>
+                            <constraint firstItem="vAE-ew-Pv9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="1LT-mM-KYq"/>
+                            <constraint firstItem="JDR-wE-xsz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7mW-vi-ysU"/>
+                            <constraint firstItem="vAE-ew-Pv9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="247-3G-Ztv" secondAttribute="bottom" constant="30" id="Cdh-1p-dpD"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vAE-ew-Pv9" secondAttribute="bottom" constant="85" id="XMv-HR-pV8"/>
+                            <constraint firstItem="cS7-aV-Tz7" firstAttribute="centerY" secondItem="JDR-wE-xsz" secondAttribute="centerY" id="YKy-YC-Crj"/>
+                            <constraint firstItem="247-3G-Ztv" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="ceQ-3A-Fvf"/>
+                            <constraint firstItem="JDR-wE-xsz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="neb-B5-t6a"/>
+                            <constraint firstAttribute="trailing" secondItem="cS7-aV-Tz7" secondAttribute="trailing" constant="16" id="r08-VR-V2y"/>
+                            <constraint firstItem="247-3G-Ztv" firstAttribute="top" secondItem="cS7-aV-Tz7" secondAttribute="bottom" constant="16" id="vma-Ub-qjL"/>
+                            <constraint firstAttribute="trailing" secondItem="247-3G-Ztv" secondAttribute="trailing" constant="8" id="vtS-kP-EkJ"/>
+                            <constraint firstItem="247-3G-Ztv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="yM7-Sa-VQJ"/>
+                            <constraint firstAttribute="trailing" secondItem="vAE-ew-Pv9" secondAttribute="trailing" constant="30" id="zdZ-QV-7h8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Extractor" id="zxY-W1-FjI">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="save" id="PI6-a7-Y6I"/>
-                            <barButtonItem systemItem="action" id="dLk-q9-IhV"/>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="dLk-q9-IhV"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="contentSlider" destination="vAE-ew-Pv9" id="iZj-lP-A3X"/>
+                        <outlet property="contentView" destination="247-3G-Ztv" id="vS3-Ai-AOZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1111.875" y="120.4225352112676"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="3vn-Ag-v3L">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gBV-b8-JeB" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QMZ-v8-Rn3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="aLV-Da-TQq"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZgT-42-lpM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="114.375" y="120.4225352112676"/>
         </scene>
     </scenes>
 </document>

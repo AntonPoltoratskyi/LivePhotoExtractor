@@ -10,6 +10,9 @@ import UIKit
 
 class CropperViewController: UIViewController {
     
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var contentSlider: CustomSlider!
+    
     
     //MARK: - Life Cycle
     
@@ -17,6 +20,23 @@ class CropperViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    
+    //MARK: - View
+    
+    func setupUI() {
+        
+    }
+    
+    
+    //MARK: - Actions
+    
+    @IBAction func actionDidTapShareButton(_ sender: Any) {
+        
+    }
+    
+    @IBAction func actionSliderValueChanged(_ sender: CustomSlider) {
+        print("current progress is \(sender.progress)")
+    }
     
     
 }
