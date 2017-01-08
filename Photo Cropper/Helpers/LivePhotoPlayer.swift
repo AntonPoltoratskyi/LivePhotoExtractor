@@ -55,8 +55,8 @@ class LivePhotoPlayer: PlayerBehaviour {
         guard let duration = duration, duration >= seconds else {
             throw LivePhotoPlayerError.wrongTime
         }
-        let time = CMTime(seconds: seconds, preferredTimescale: 1000)
-        player.seek(to: time)
+        let time = CMTime(seconds: seconds, preferredTimescale: 10)
+        player.seek(to: time, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
     }
     
     func captureImage(completion: @escaping (UIImage?, Error?) -> Void) {
