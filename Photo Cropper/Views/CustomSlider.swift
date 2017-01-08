@@ -15,6 +15,9 @@ class CustomSlider: UIControl {
     var rightBar: UIView!
     var progress: CGFloat = 0
     
+    var leftBarColor: UIColor = .blue
+    var rightBarColor: UIColor = .blue
+    var circleColor: UIColor = .blue
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,15 +32,16 @@ class CustomSlider: UIControl {
         //initialize bars
         self.backgroundColor = .clear
         self.leftBar = UIView()
-        self.leftBar.backgroundColor = .white
+        self.leftBar.backgroundColor = self.leftBarColor
         self.leftBar.alpha = 1
         
         self.rightBar = UIView()
-        self.rightBar.backgroundColor = .white
+        self.rightBar.backgroundColor = self.rightBarColor
         self.rightBar.alpha = 0.4
         
         //initialize indicator
         self.indicator = SliderIndicator()
+        self.indicator.color = self.circleColor
         self.addSubview(leftBar)
         self.addSubview(rightBar)
         self.addSubview(indicator)
@@ -133,6 +137,9 @@ class SliderIndicator:UIView {
         return atan2(self.containerView.layer.transform.m12, self.containerView.layer.transform.m11)
     }
     
+    var color: UIColor!
+    
+    
     override func didMoveToSuperview() {
         self.isUserInteractionEnabled = false
         containerView = UIView()
@@ -141,7 +148,6 @@ class SliderIndicator:UIView {
         
         containerView.layer.addSublayer(circleLayer)
         containerView.layer.addSublayer(triangleLayer)
-        
     }
     
     
@@ -182,7 +188,7 @@ class SliderIndicator:UIView {
         ovalPath.addPath(CGPath(ellipseIn: ovalframe.insetBy(dx: self.ovalInset, dy: self.ovalInset), transform: nil))
         self.circleLayer.fillRule = kCAFillRuleEvenOdd
         self.circleLayer.path = ovalPath
-        self.circleLayer.fillColor = UIColor.white.cgColor
+        self.circleLayer.fillColor = self.color.cgColor
         
         
         let trianglePath = CGMutablePath()
@@ -192,10 +198,9 @@ class SliderIndicator:UIView {
         trianglePath.addLine(to: CGPoint(x: self.bounds.width / 2 - triangleWidth_2, y: self.bounds.height - self.bounds.width + 2))
         trianglePath.closeSubpath()
         self.triangleLayer.path = trianglePath
-        self.triangleLayer.fillColor = UIColor.white.cgColor
+        self.triangleLayer.fillColor = self.color.cgColor
     }
 }
-
 
 
 extension CGFloat{
@@ -204,6 +209,5 @@ extension CGFloat{
             return true
         }
         return false
-        
     }
 }

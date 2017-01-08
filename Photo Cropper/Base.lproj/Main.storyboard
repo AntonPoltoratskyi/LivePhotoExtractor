@@ -37,7 +37,7 @@
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="vAE-ew-Pv9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LVS-vd-f2V"/>
                             <constraint firstItem="247-3G-Ztv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="QAC-ex-SRv"/>
