@@ -8,27 +8,43 @@
 
 import UIKit
 
+@IBDesignable
 class CustomSlider: UIControl {
     
     var indicator: SliderIndicator!
     var leftBar: UIView!
     var rightBar: UIView!
+    
+    @IBInspectable var leftBarColor: UIColor = .blue
+    @IBInspectable var rightBarColor: UIColor = .blue
+    @IBInspectable var indicatorColor: UIColor = .blue
+    
     var progress: CGFloat = 0
     
-    var leftBarColor: UIColor = .blue
-    var rightBarColor: UIColor = .blue
-    var circleColor: UIColor = .blue
+    private var indicatorWidth: CGFloat {
+        return self.bounds.height * 0.62
+    }
+    private var indicatorHeight: CGFloat {
+        return self.bounds.height * 0.71
+    }
+    
+    
+    //MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        setup()
     }
     
     
-    override func didMoveToSuperview() {
+    //MARK: - Setup
+    
+    func setup() {
         //initialize bars
         self.backgroundColor = .clear
         self.leftBar = UIView()
@@ -41,17 +57,16 @@ class CustomSlider: UIControl {
         
         //initialize indicator
         self.indicator = SliderIndicator()
-        self.indicator.color = self.circleColor
+        self.indicator.color = self.indicatorColor
         self.addSubview(leftBar)
         self.addSubview(rightBar)
         self.addSubview(indicator)
     }
     
     
+    //MARK: - Layout
+    
     override func layoutSubviews() {
-        
-        let indicatorWidth = self.bounds.height * 0.62
-        let indicatorHeight = self.bounds.height * 0.71
         
         if (self.indicator.frame == .zero){
             self.indicator.frame = CGRect(x: 0,
@@ -73,6 +88,8 @@ class CustomSlider: UIControl {
     }
     
     
+    //MARK: - Interaction
+    
     override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         let point = touch.location(in: self.indicator)
         if (self.indicator.bounds.contains(point)) {
@@ -81,8 +98,9 @@ class CustomSlider: UIControl {
             return false
         }
     }
+    
     override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
-        let indicatorWidth = self.bounds.height * 0.62
+        
         let delta = touch.location(in: self.indicator).x - touch.previousLocation(in: self.indicator).x
         let futureP = self.indicator.center.x + delta
         
@@ -115,14 +133,16 @@ class CustomSlider: UIControl {
         }
         return true
     }
+    
     override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
         self.indicator.resetRotation()
     }
 }
 
 
-
-class SliderIndicator:UIView {
+//MARK: -
+class SliderIndicator: UIView {
+    
     var containerView:UIView!
     let circleLayer = CAShapeLayer()
     let triangleLayer = CAShapeLayer()
@@ -136,11 +156,24 @@ class SliderIndicator:UIView {
     var currentAngle:CGFloat{
         return atan2(self.containerView.layer.transform.m12, self.containerView.layer.transform.m11)
     }
-    
     var color: UIColor!
     
     
-    override func didMoveToSuperview() {
+    //MARK: - Init
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    
+    //MARK: - Setup
+    
+    func setup() {
         self.isUserInteractionEnabled = false
         containerView = UIView()
         self.addSubview(containerView)
@@ -150,19 +183,25 @@ class SliderIndicator:UIView {
         containerView.layer.addSublayer(triangleLayer)
     }
     
-    
-    
+    //MARK: - Rotation
     
     func rotateRight() -> Bool{
-        if(self.currentAngle <= -maxRadian){return false}
-        self.containerView.layer.transform = CATransform3DRotate(self.containerView.layer.transform, -self.maxRadian/maxMove, 0.0, 0.00001, 1)
+        guard self.currentAngle > -maxRadian else {
+            return false
+        }
+        self.containerView.layer.transform = CATransform3DRotate(self.containerView.layer.transform,
+                                                                 -self.maxRadian/maxMove, 0.0, 0.00001, 1)
         return true
     }
     func rotateLeft() -> Bool{
-        if(self.currentAngle >= maxRadian){return false}
-        self.containerView.layer.transform = CATransform3DRotate(self.containerView.layer.transform, self.maxRadian/maxMove, 0.0, 0.00001, 1)
+        guard self.currentAngle < maxRadian else {
+            return false
+        }
+        self.containerView.layer.transform = CATransform3DRotate(self.containerView.layer.transform,
+                                                                 self.maxRadian/maxMove, 0.0, 0.00001, 1)
         return true
     }
+    
     func resetRotation(){
         UIView.animate(withDuration: 0.4,
                        delay: 0,
@@ -174,6 +213,8 @@ class SliderIndicator:UIView {
         }, completion: nil)
     }
     
+    
+    //MARK: - Layout
     
     override func layoutSubviews(){
         self.containerView.frame = self.bounds
@@ -202,7 +243,7 @@ class SliderIndicator:UIView {
     }
 }
 
-
+//MARK: -
 extension CGFloat{
     func within(value1: CGFloat, value2: CGFloat) -> Bool{
         if(self <= value2 && self >= value1){
