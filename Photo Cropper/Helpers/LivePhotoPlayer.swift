@@ -15,7 +15,17 @@ enum LivePhotoPlayerError: Error {
     case emptyImageGenerator
 }
 
-class LivePhotoPlayer {
+protocol PlayerBehaviour {
+    var videoUrl: URL {get set}
+    var player: AVPlayer {get set}
+    var duration: CMTime? {get}
+    init(_ url: URL)
+    func layer() -> AVPlayerLayer
+    func move(to seconds: Double) throws
+    func captureImage(completion: @escaping (UIImage?, Error?) -> Void) throws
+}
+
+class LivePhotoPlayer: PlayerBehaviour {
     var videoUrl: URL
     
     lazy var player: AVPlayer = {
@@ -33,8 +43,12 @@ class LivePhotoPlayer {
         return AVAssetImageGenerator(asset: asset)
     }
     
-    init(_ url: URL) {
+    required init(_ url: URL) {
         self.videoUrl = url
+    }
+    
+    func layer() -> AVPlayerLayer {
+        return AVPlayerLayer(player: player)
     }
     
     func move(to seconds: Double) throws {
