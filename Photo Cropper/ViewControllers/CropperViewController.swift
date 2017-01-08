@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class CropperViewController: UIViewController {
     
@@ -19,6 +21,7 @@ class CropperViewController: UIViewController {
         return MediaResourceManager()
     }()
     var livePhotoPlayer: PlayerBehaviour?
+    var currentLayer: AVPlayerLayer?
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var contentSlider: CustomSlider!
@@ -37,6 +40,9 @@ class CropperViewController: UIViewController {
         
     }
     func showVideo(_ url: URL) {
+        if currentLayer != nil {
+            currentLayer?.removeFromSuperlayer()
+        }
         livePhotoPlayer = LivePhotoPlayer(url)
         guard let livePhotoPlayer = livePhotoPlayer else {
             return
@@ -44,6 +50,7 @@ class CropperViewController: UIViewController {
         let layer = livePhotoPlayer.layer()
         layer.frame = contentView.bounds
         contentView.layer.addSublayer(layer)
+        currentLayer = layer
     }
     
     //MARK: - Actions
@@ -76,7 +83,6 @@ class CropperViewController: UIViewController {
         let neededTime = Double(sender.progress) * duration
         do {
             try livePhotoPlayer.move(to: neededTime)
-            print(neededTime)
         } catch {
             print(error)
         }
