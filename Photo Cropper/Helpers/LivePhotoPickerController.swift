@@ -13,6 +13,7 @@ import MobileCoreServices
 
 protocol LivePhotoPickerControllerDelegate: class {
     func pickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
+    func pickerDidCancel(_ picker: UIImagePickerController)
 }
 
 class LivePhotoPickerController: NSObject {
@@ -31,5 +32,8 @@ class LivePhotoPickerController: NSObject {
 extension LivePhotoPickerController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         delegate?.pickerController(picker, didFinishPickingMediaWithInfo: info)
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        delegate?.pickerDidCancel(picker)
     }
 }

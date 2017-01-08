@@ -7,27 +7,27 @@
 //
 
 import UIKit
-import Photos
 
-class CropperViewController: UIViewController, LivePhotoPickerControllerDelegate {
+class CropperViewController: UIViewController {
+    
+    lazy var livePhotoPickerController: LivePhotoPickerController = {
+        let picker = LivePhotoPickerController()
+        picker.delegate = self
+        return picker
+    }()
+    lazy var mediaManager: MediaResourceManager = {
+        return MediaResourceManager()
+    }()
+    var livePhotoPlayer: PlayerBehaviour?
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var contentSlider: CustomSlider!
-    
-    let pickerController = LivePhotoPickerController()
-    
-    var galleryAccessGranted = false
     
     
     //MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        pickerController.delegate = self
-        
-        setupUI()
-        requestGalleryPermission()
     }
     
     
@@ -36,75 +36,66 @@ class CropperViewController: UIViewController, LivePhotoPickerControllerDelegate
     func setupUI() {
         
     }
-    
-    
-    //MARK: - Permissions
-    
-    func requestGalleryPermission() {
-        
-        let status = PHPhotoLibrary.authorizationStatus()
-        
-        switch status {
-        case .authorized:
-            self.galleryAccessGranted = true
-        case .notDetermined:
-            PHPhotoLibrary.requestAuthorization { newStatus in
-                self.galleryAccessGranted = newStatus == .authorized
-            }
-        default:
-            break
+    func showVideo(_ url: URL) {
+        livePhotoPlayer = LivePhotoPlayer(url)
+        guard let livePhotoPlayer = livePhotoPlayer else {
+            return
         }
+        let layer = livePhotoPlayer.layer()
+        layer.frame = contentView.bounds
+        contentView.layer.addSublayer(layer)
     }
-    
     
     //MARK: - Actions
     
-    @IBAction func actionDidTapSelectLivePhoto(_ sender: Any) {
-        selectLivePhoto()
-    }
-    
-    @IBAction func actionDidTapShareButton(_ sender: Any) {
-        
-    }
-    
-    @IBAction func actionSliderValueChanged(_ sender: CustomSlider) {
-        
-    }
-    
-    func selectLivePhoto() {
-        if galleryAccessGranted {
-            self.present(pickerController.picker, animated: true, completion: nil)
-        } else {
-            self.showNotGrantedGalleryAccessAlert()
+    @IBAction func didTapSelectButton(_ sender: Any) {
+        //hide button 
+        present(livePhotoPickerController.picker, animated: true) {
+            //hide button
         }
     }
-}
+    @IBAction func actionDidTapShareButton(_ sender: Any) {
+        guard let player = livePhotoPlayer else {
+            //handle somehow
+            return
+        }
 
-//MARK: - LivePhotoPickerControllerDelegate
-extension CropperViewController {
+        player.captureImage { (image, error) in
+            if let image = image {
+                let activityController = SharingManager.activityController(with: image)
+                self.present(activityController, animated: true, completion: nil)
+            } else {
+                print(error)
+            }
+        }
+    }
+    @IBAction func actionSliderValueChanged(_ sender: CustomSlider) {
+        guard let livePhotoPlayer = livePhotoPlayer, let duration = livePhotoPlayer.duration else {
+            return
+        }
+        let neededTime = Double(sender.progress) * duration
+        do {
+            try livePhotoPlayer.move(to: neededTime)
+            print(neededTime)
+        } catch {
+            print(error)
+        }
+    }
+    
+}
+extension CropperViewController: LivePhotoPickerControllerDelegate {
     func pickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        print(info)
+        mediaManager.process(info) { [weak self] (url, error) in
+            if let url = url {
+                self?.showVideo(url)
+            } else {
+                //process error
+            }
+        }
+        picker.dismiss(animated: true, completion: nil)
     }
-}
-
-//MARK: - Validation
-extension CropperViewController {
-    
-    func showNotGrantedGalleryAccessAlert() {
-        let alert = self.alertViewController(title: "Warning", message: "Gallery access not granted")
-        self.present(alert, animated: true, completion: nil)
-    }
-}
-
-
-//MARK: - Alert
-extension UIViewController {
-    
-    func alertViewController(title: String, message: String) -> UIAlertController {
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        
-        return alert
+    func pickerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+        //show button
     }
 }

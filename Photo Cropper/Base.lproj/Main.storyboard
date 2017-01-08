@@ -6,11 +6,12 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Extractor-->
+        <!--Cropper View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="CropperViewController" customModule="Photo_Cropper" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,29 +25,31 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="247-3G-Ztv">
                                 <rect key="frame" x="8" y="80" width="304" height="341"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUJ-M4-lwB">
+                                        <rect key="frame" x="126.5" y="145" width="51" height="51"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="51" id="ERw-6c-ZFG"/>
+                                            <constraint firstAttribute="width" secondItem="AUJ-M4-lwB" secondAttribute="height" multiplier="1:1" id="jIo-nd-h2v"/>
+                                        </constraints>
+                                        <state key="normal" image="Camera"/>
+                                        <connections>
+                                            <action selector="didTapSelectButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AwK-5d-R9A"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="AYJ-Sd-Img" appends="YES" id="UKi-yh-p8e"/>
-                                </connections>
+                                <constraints>
+                                    <constraint firstItem="AUJ-M4-lwB" firstAttribute="centerX" secondItem="247-3G-Ztv" secondAttribute="centerX" id="APY-sA-ZQg"/>
+                                    <constraint firstItem="AUJ-M4-lwB" firstAttribute="centerY" secondItem="247-3G-Ztv" secondAttribute="centerY" id="st7-e8-dEw"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vAE-ew-Pv9" customClass="CustomSlider" customModule="Photo_Cropper" customModuleProvider="target">
                                 <rect key="frame" x="80" y="437" width="160" height="40"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="poE-jg-3vd"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="leftBarColor">
-                                        <color key="value" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="rightBarColor">
-                                        <color key="value" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
-                                        <color key="value" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="actionSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="175-X6-ZEp"/>
                                 </connections>
@@ -64,8 +67,12 @@
                             <constraint firstItem="247-3G-Ztv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="yM7-Sa-VQJ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Extractor" id="zxY-W1-FjI">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="dLk-q9-IhV"/>
+                    <navigationItem key="navigationItem" id="zxY-W1-FjI">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="dLk-q9-IhV">
+                            <connections>
+                                <action selector="actionDidTapShareButton:" destination="BYZ-38-t0r" id="hY8-Mh-2AF"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="contentSlider" destination="vAE-ew-Pv9" id="iZj-lP-A3X"/>
@@ -73,11 +80,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="AYJ-Sd-Img">
-                    <connections>
-                        <action selector="actionDidTapSelectLivePhoto:" destination="BYZ-38-t0r" id="VcI-0B-Hy0"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2109.375" y="120.4225352112676"/>
         </scene>
@@ -100,4 +102,7 @@
             <point key="canvasLocation" x="1311" y="120"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Camera" width="512" height="512"/>
+    </resources>
 </document>
