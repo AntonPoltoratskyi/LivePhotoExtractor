@@ -28,7 +28,7 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vAE-ew-Pv9" customClass="CustomSlider" customModule="Photo_Cropper" customModuleProvider="target">
                                 <rect key="frame" x="30" y="453" width="260" height="30"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="poE-jg-3vd"/>
                                 </constraints>
@@ -50,7 +50,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="vAE-ew-Pv9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="1LT-mM-KYq"/>
                             <constraint firstItem="JDR-wE-xsz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7mW-vi-ysU"/>
