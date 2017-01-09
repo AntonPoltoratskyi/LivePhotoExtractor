@@ -184,25 +184,73 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3bO-g8-s3m">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3bO-g8-s3m">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="bJM-6m-LKG" appends="YES" id="fvr-qm-ePB"/>
+                                </connections>
                             </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ue-Gv-FKc">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nzE-sH-hue">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uXR-mB-qED">
+                                            <rect key="frame" x="24" y="31" width="16" height="22"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <state key="normal" image="close"/>
+                                            <connections>
+                                                <action selector="actionDidTapCloseButton:" destination="qcV-Sp-zl7" eventType="touchUpInside" id="45s-CQ-Ol8"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pap-y3-f76">
+                                            <rect key="frame" x="280" y="31" width="16" height="22"/>
+                                            <state key="normal" image="share"/>
+                                            <connections>
+                                                <action selector="actionDidTapShareButton:" destination="qcV-Sp-zl7" eventType="touchUpInside" id="jAH-XT-ESE"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Pap-y3-f76" firstAttribute="centerY" secondItem="nzE-sH-hue" secondAttribute="centerY" constant="10" id="3sb-lj-WIU"/>
+                                        <constraint firstItem="uXR-mB-qED" firstAttribute="leading" secondItem="nzE-sH-hue" secondAttribute="leading" constant="24" id="6st-6N-1j6"/>
+                                        <constraint firstAttribute="trailing" secondItem="Pap-y3-f76" secondAttribute="trailing" constant="24" id="OM2-lI-M3O"/>
+                                        <constraint firstItem="uXR-mB-qED" firstAttribute="centerY" secondItem="nzE-sH-hue" secondAttribute="centerY" constant="10" id="XBD-Gy-x1V"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="9g1-Ov-Apq"/>
+                                </constraints>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="0.052141942080000003" green="0.072356320919999995" blue="0.32408589119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="VsY-Q1-ID0" firstAttribute="top" secondItem="3bO-g8-s3m" secondAttribute="bottom" id="3bd-qZ-Ij8"/>
+                            <constraint firstItem="3bO-g8-s3m" firstAttribute="top" secondItem="YUF-XC-JfD" secondAttribute="top" id="996-ZI-34u"/>
                             <constraint firstItem="3bO-g8-s3m" firstAttribute="leading" secondItem="YUF-XC-JfD" secondAttribute="leading" id="XZo-yc-0Bj"/>
+                            <constraint firstAttribute="trailing" secondItem="9Ue-Gv-FKc" secondAttribute="trailing" id="c9y-5k-orC"/>
+                            <constraint firstItem="9Ue-Gv-FKc" firstAttribute="top" secondItem="YUF-XC-JfD" secondAttribute="top" id="oZ1-zU-3Lf"/>
                             <constraint firstAttribute="trailing" secondItem="3bO-g8-s3m" secondAttribute="trailing" id="qa3-ed-FNu"/>
-                            <constraint firstItem="3bO-g8-s3m" firstAttribute="top" secondItem="RMj-3d-XaQ" secondAttribute="bottom" id="u3I-6M-MHZ"/>
+                            <constraint firstItem="9Ue-Gv-FKc" firstAttribute="leading" secondItem="YUF-XC-JfD" secondAttribute="leading" id="wmQ-kX-tfG"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="blurView" destination="9Ue-Gv-FKc" id="qy1-0p-hm4"/>
+                        <outlet property="blurViewTopConstraint" destination="oZ1-zU-3Lf" id="TXy-7o-Gz8"/>
                         <outlet property="imageView" destination="3bO-g8-s3m" id="vs6-f3-lBK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8En-Hi-gJ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="bJM-6m-LKG">
+                    <connections>
+                        <action selector="actionDidTapImageView:" destination="qcV-Sp-zl7" id="aMT-0s-iYY"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2861" y="827"/>
+            <point key="canvasLocation" x="3086" y="827"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8C6-M9-rbO">
@@ -227,6 +275,7 @@
         <image name="camera" width="128" height="128"/>
         <image name="close" width="16" height="16"/>
         <image name="photo" width="16" height="16"/>
+        <image name="share" width="16" height="16"/>
         <image name="video" width="16" height="16"/>
     </resources>
 </document>
