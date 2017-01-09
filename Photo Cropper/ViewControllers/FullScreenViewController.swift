@@ -15,19 +15,58 @@ class FullScreenViewController: UIViewController {
             imageView.image = detailsImage
         }
     }
-    
     var detailsImage: UIImage?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBOutlet weak var blurView: UIVisualEffectView!
+    @IBOutlet weak var blurViewTopConstraint: NSLayoutConstraint!
+    var isTopBarVisible: Bool {
+        return blurViewTopConstraint.constant == 0
     }
     
     func setup(_ image: UIImage) {
         self.detailsImage = image
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    //MARK: - Life Cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    
+    //MARK: - View
+    
+    func hideTopView() {
+        self.blurViewTopConstraint.constant = -self.blurView.frame.height
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func showTopView() {
+        self.blurViewTopConstraint.constant = 0
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    
+    //MARK: - Actions
+    
+    @IBAction func actionDidTapCloseButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func actionDidTapShareButton(_ sender: Any) {
+        guard let image = detailsImage else {
+            return
+        }
+        let activityController = SharingManager.activityController(with: image)
+        present(activityController, animated: true, completion: nil)
+    }
+    
+    @IBAction func actionDidTapImageView(_ sender: Any) {
+        isTopBarVisible ? hideTopView() : showTopView()
     }
 }
