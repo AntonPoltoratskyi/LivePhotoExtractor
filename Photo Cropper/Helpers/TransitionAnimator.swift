@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-    let duration    = 1.0
+    let duration    = 0.6
     var presenting  = true
     var originFrame = CGRect.zero
     
@@ -26,24 +26,21 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         let finalFrame = presenting ? mainView.frame : originFrame
         
         var scaleX: CGFloat = initialFrame.width / finalFrame.width
-        scaleX = !presenting ? scaleX : 1 / scaleX
+        scaleX = presenting ? scaleX : 1 / scaleX
         var scaleY: CGFloat = initialFrame.height / finalFrame.height
-        scaleY = !presenting ? scaleY : 1 / scaleY
+        scaleY = presenting ? scaleY : 1 / scaleY
         
         let scaling = CGAffineTransform(scaleX: scaleX, y: scaleY)
         
         if presenting {
-            mainView.transform = scaling
-            mainView.center = CGPoint(x: originFrame.midX, y: originFrame.midY)
-            mainView.clipsToBounds = true
+            toView.transform = scaling
+            toView.center = CGPoint(x: originFrame.midX, y: originFrame.midY)
+            toView.clipsToBounds = true
         }
         containerView.addSubview(toView)
         containerView.bringSubview(toFront: mainView)
-        
         UIView.animate(withDuration: duration,
                        delay: 0,
-                       usingSpringWithDamping: 0.3,
-                       initialSpringVelocity: 0.3,
                        options: .curveEaseOut,
                        animations: { 
                         mainView.transform = self.presenting ? CGAffineTransform.identity : scaling
@@ -55,18 +52,14 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 }
 extension FullScreenViewController: UIViewControllerTransitioningDelegate {}
 extension MainViewController: UIViewControllerTransitioningDelegate {
-    func animationControllerForPresentedController(
-        presented: UIViewController,
-        presentingController presenting: UIViewController,
-        sourceController source: UIViewController) ->
-        UIViewControllerAnimatedTransitioning? {
-            if let layer = currentLayer {
-                animator.originFrame = layer.frame
-            }
-            animator.presenting = true
-            return animator
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if let layer = currentLayer {
+            animator.originFrame = contentView.convert(layer.frame, to: nil)
+        }
+        animator.presenting = true
+        return animator
     }
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         animator.presenting = false
         return animator
     }

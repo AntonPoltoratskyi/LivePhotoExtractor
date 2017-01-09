@@ -10,14 +10,20 @@ import UIKit
 
 class FullScreenViewController: UIViewController {
 
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView! {
+        didSet {
+            imageView.image = detailsImage
+        }
+    }
+    
+    var detailsImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     func setup(_ image: UIImage) {
-        self.imageView.image = image
+        self.detailsImage = image
     }
     
     override func didReceiveMemoryWarning() {

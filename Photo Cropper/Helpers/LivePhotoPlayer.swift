@@ -23,6 +23,7 @@ protocol PlayerBehaviour {
     func layer() -> AVPlayerLayer
     func move(to seconds: Double) throws
     func captureImage(completion: @escaping (UIImage?, Error?) -> Void)
+    func captureImageSynchronously() -> UIImage? 
 }
 
 class LivePhotoPlayer: PlayerBehaviour {
@@ -92,6 +93,33 @@ class LivePhotoPlayer: PlayerBehaviour {
                 anImage = anImage.imageRotatedByDegrees(degrees: 90, flip: false)
             }
             completion(anImage, error)
+        }
+    }
+    func captureImageSynchronously() -> UIImage? {
+        guard let generator = imageGenerator else {
+            return nil
+        }
+        let currentTime = player.currentTime()
+        do {
+            let image = try generator.copyCGImage(at: currentTime, actualTime: nil)
+            var shouldRotate = false
+            if let videoSize = self.player.currentItem?.presentationSize {
+                if (videoSize.width > videoSize.height && image.width > image.height) ||
+                    (videoSize.width < videoSize.height && image.width < image.height) {
+                    shouldRotate = false
+                } else {
+                    shouldRotate = true
+                }
+            }
+            
+            var anImage = UIImage(cgImage: image)
+            if shouldRotate {
+                anImage = anImage.imageRotatedByDegrees(degrees: 90, flip: false)
+            }
+            return anImage
+        } catch {
+            debugPrint(error)
+            return nil
         }
     }
 }

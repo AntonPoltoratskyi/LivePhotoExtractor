@@ -70,6 +70,9 @@ class MainViewController: UIViewController {
         if let fullScreenVC = segue.destination as? FullScreenViewController {
             fullScreenVC.transitioningDelegate = self
             //get image and setup
+            if let image = sender as? UIImage {
+                fullScreenVC.setup(image)
+            }
         }
     }
     
@@ -80,11 +83,16 @@ class MainViewController: UIViewController {
         contentView.addGestureRecognizer(tapGestureRecognizer)
     }
     func imageTapped() {
-        guard let layer = currentLayer else {
+        guard let player = livePhotoPlayer else { return }
+        guard currentLayer != nil else {
             return
         }
-        //Move to constants
-        performSegue(withIdentifier: "Details", sender: nil)
+        if let image = player.captureImageSynchronously() {
+            let watermarkedImage = image.addingWatermark(text: Constants.watermarkText,
+                                                         font: Constants.watermarkFont,
+                                                         color: Constants.watermarkColor)
+            self.performSegue(withIdentifier: "Details", sender: watermarkedImage)
+        }
     }
     
     func initialUI() {
