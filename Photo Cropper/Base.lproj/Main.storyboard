@@ -23,11 +23,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="247-3G-Ztv">
-                                <rect key="frame" x="8" y="80" width="304" height="341"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vAE-ew-Pv9" customClass="CustomSlider" customModule="Photo_Cropper" customModuleProvider="target">
+                                <rect key="frame" x="80" y="440.5" width="160" height="40"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="poE-jg-3vd"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="leftBarColor">
+                                        <color key="value" red="0.60392156860000001" green="0.31764705879999999" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rightBarColor">
+                                        <color key="value" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="actionSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="175-X6-ZEp"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="247-3G-Ztv" customClass="CorneredView" customModule="Photo_Cropper" customModuleProvider="target">
+                                <rect key="frame" x="32" y="100" width="256" height="324.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUJ-M4-lwB">
-                                        <rect key="frame" x="126.5" y="145" width="51" height="51"/>
+                                        <rect key="frame" x="102.5" y="137.5" width="51" height="51"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="51" id="ERw-6c-ZFG"/>
                                             <constraint firstAttribute="width" secondItem="AUJ-M4-lwB" secondAttribute="height" multiplier="1:1" id="jIo-nd-h2v"/>
@@ -43,28 +64,29 @@
                                     <constraint firstItem="AUJ-M4-lwB" firstAttribute="centerX" secondItem="247-3G-Ztv" secondAttribute="centerX" id="APY-sA-ZQg"/>
                                     <constraint firstItem="AUJ-M4-lwB" firstAttribute="centerY" secondItem="247-3G-Ztv" secondAttribute="centerY" id="st7-e8-dEw"/>
                                 </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vAE-ew-Pv9" customClass="CustomSlider" customModule="Photo_Cropper" customModuleProvider="target">
-                                <rect key="frame" x="80" y="437" width="160" height="40"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="poE-jg-3vd"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="actionSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="175-X6-ZEp"/>
-                                </connections>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="frameColor">
+                                        <color key="value" red="0.24278077483177185" green="0.6778685450553894" blue="0.95844000577926636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="frameWidth">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="frameAspect">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showFrame" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="247-3G-Ztv" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="4/5" id="HUT-Oy-PAm"/>
                             <constraint firstItem="vAE-ew-Pv9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LVS-vd-f2V"/>
-                            <constraint firstItem="247-3G-Ztv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="QAC-ex-SRv"/>
+                            <constraint firstItem="247-3G-Ztv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="36" id="QAC-ex-SRv"/>
                             <constraint firstItem="vAE-ew-Pv9" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="1/2" id="SMj-Jo-8WK"/>
-                            <constraint firstItem="vAE-ew-Pv9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="247-3G-Ztv" secondAttribute="bottom" constant="16" id="ZDO-aF-14G"/>
-                            <constraint firstItem="247-3G-Ztv" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="ceQ-3A-Fvf"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vAE-ew-Pv9" secondAttribute="bottom" priority="999" constant="100" id="ulQ-QN-XDl"/>
-                            <constraint firstAttribute="trailing" secondItem="247-3G-Ztv" secondAttribute="trailing" constant="8" id="vtS-kP-EkJ"/>
-                            <constraint firstItem="247-3G-Ztv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="yM7-Sa-VQJ"/>
+                            <constraint firstItem="247-3G-Ztv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TvR-ja-Vsm"/>
+                            <constraint firstItem="vAE-ew-Pv9" firstAttribute="top" secondItem="247-3G-Ztv" secondAttribute="bottom" constant="16" id="ZDO-aF-14G"/>
+                            <constraint firstItem="247-3G-Ztv" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="4/7" id="ceQ-3A-Fvf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zxY-W1-FjI">
