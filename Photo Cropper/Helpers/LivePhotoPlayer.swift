@@ -40,7 +40,12 @@ class LivePhotoPlayer: PlayerBehaviour {
         guard let asset = player.currentItem?.asset else {
             return nil
         }
-        return AVAssetImageGenerator(asset: asset)
+        let generator = AVAssetImageGenerator(asset: asset)
+        
+        generator.requestedTimeToleranceBefore = kCMTimeZero
+        generator.requestedTimeToleranceAfter = kCMTimeZero
+        
+        return generator
     }
     
     required init(_ url: URL) {
@@ -65,11 +70,9 @@ class LivePhotoPlayer: PlayerBehaviour {
             return
         }
         let currentTime = player.currentTime()
+        
         generator.generateCGImagesAsynchronously(forTimes: [NSValue(time: currentTime)]) { (firstTime, image, secondTime, result, error) in
-            print(firstTime)
-            print(secondTime)
-            print(result)
-            print(error)
+            
             guard let image = image else {
                 completion(nil, error)
                 return
