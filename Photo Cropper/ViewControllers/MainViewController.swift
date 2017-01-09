@@ -55,6 +55,8 @@ class MainViewController: UIViewController {
         setUpNavBar()
         requestGalleryPermission()
         addTapGestureRecognizer()
+        self.view.gradiented([UIColor(red: 64 / 255, green: 57 / 255, blue: 130 / 255, alpha: 1.0),
+                              .white])
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -100,7 +102,7 @@ class MainViewController: UIViewController {
         applyColor()
     }
     func applyColor() {
-        [photoButton, videoButton, closeButton].forEach {$0.image(colored: .white)}
+        [photoButton, videoButton, closeButton].forEach {$0.image(colored: UIColor(red: 64 / 255, green: 57 / 255, blue: 130 / 255, alpha: 1.0))}
     }
     
     func setUpNavBar() {
@@ -108,7 +110,7 @@ class MainViewController: UIViewController {
         
         bar?.setBackgroundImage(UIImage(), for: .default)
         bar?.shadowImage = UIImage()
-        bar?.backgroundColor = UIColor(red: 64 / 255, green: 57 / 255, blue: 130 / 255, alpha: 1)
+        bar?.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
     }
     func showVideo(_ url: URL) {
         if currentLayer != nil {

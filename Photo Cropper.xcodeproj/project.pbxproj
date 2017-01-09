@@ -20,6 +20,7 @@
 		60095EDD1E23F457001A87E0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 60095EDF1E23F457001A87E0 /* Localizable.strings */; };
 		60095EE21E2402BD001A87E0 /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60095EE11E2402BD001A87E0 /* TransitionAnimator.swift */; };
 		60095EE41E240A95001A87E0 /* FullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60095EE31E240A95001A87E0 /* FullScreenViewController.swift */; };
+		60095EE61E242A15001A87E0 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60095EE51E242A15001A87E0 /* UIViewExtensions.swift */; };
 		60837A5F1E229CF100E0892D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60837A5E1E229CF100E0892D /* AppDelegate.swift */; };
 		60837A741E229CF100E0892D /* Photo_CropperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60837A731E229CF100E0892D /* Photo_CropperTests.swift */; };
 		60837A811E229E5A00E0892D /* LivePhotoPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60837A801E229E5A00E0892D /* LivePhotoPickerController.swift */; };
@@ -56,6 +57,7 @@
 		60095EE01E23F46E001A87E0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		60095EE11E2402BD001A87E0 /* TransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
 		60095EE31E240A95001A87E0 /* FullScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenViewController.swift; sourceTree = "<group>"; };
+		60095EE51E242A15001A87E0 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		60837A5B1E229CF100E0892D /* Photo Cropper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photo Cropper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60837A5E1E229CF100E0892D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60837A6F1E229CF100E0892D /* Photo CropperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Photo CropperTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +95,7 @@
 				1424C2E71E23829700814324 /* UIViewController+Alert.swift */,
 				1424C2E91E23B76200814324 /* UIImage+Rotation.swift */,
 				1438CBD01E23F89E00A08692 /* UIImage+Watermark.swift */,
+				60095EE51E242A15001A87E0 /* UIViewExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				60837A8C1E22C0B000E0892D /* CustomSlider.swift in Sources */,
 				60837A811E229E5A00E0892D /* LivePhotoPickerController.swift in Sources */,
 				1424C2E81E23829700814324 /* UIViewController+Alert.swift in Sources */,
+				60095EE61E242A15001A87E0 /* UIViewExtensions.swift in Sources */,
 				60837A891E22BB4A00E0892D /* SharingManager.swift in Sources */,
 				60837A5F1E229CF100E0892D /* AppDelegate.swift in Sources */,
 				60837A831E22A1B100E0892D /* MediaResourceManager.swift in Sources */,

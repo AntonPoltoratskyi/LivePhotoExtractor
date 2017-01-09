@@ -69,7 +69,7 @@
                                         <color key="value" red="0.45085990428924561" green="0.43550080060958862" blue="0.58029383420944214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="frameWidth">
-                                        <real key="value" value="3"/>
+                                        <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="frameAspect">
                                         <real key="value" value="0.10000000000000001"/>
@@ -112,6 +112,24 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ywo-Wu-oiU">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="nY3-fI-OYZ">
+                            <rect key="frame" x="62" y="6" width="128" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#Snaplive" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icE-Ao-jdF">
+                                    <rect key="frame" x="20.5" y="5" width="87.5" height="23.5"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                    <color key="textColor" red="0.4508599043" green="0.43550080060000002" blue="0.58029383420000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="icE-Ao-jdF" firstAttribute="centerX" secondItem="nY3-fI-OYZ" secondAttribute="centerX" id="J3U-3i-eat"/>
+                                <constraint firstItem="icE-Ao-jdF" firstAttribute="centerY" secondItem="nY3-fI-OYZ" secondAttribute="centerY" id="tdE-Fa-ZWc"/>
+                            </constraints>
+                        </view>
                         <rightBarButtonItems>
                             <barButtonItem id="rnB-iC-Hdr">
                                 <view key="customView" contentMode="scaleToFill" id="83v-IZ-4J1">
