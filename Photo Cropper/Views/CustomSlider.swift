@@ -8,16 +8,16 @@
 
 import UIKit
 
-@IBDesignable
+//@IBDesignable
 class CustomSlider: UIControl {
     
     var indicator: SliderIndicator!
     var leftBar: UIView!
     var rightBar: UIView!
     
-    @IBInspectable var leftBarColor: UIColor = UIColor(red: 62 / 255, green: 173 / 255, blue: 244 / 255, alpha: 1.0)
-    @IBInspectable var rightBarColor: UIColor = UIColor(red: 62 / 255, green: 173 / 255, blue: 244 / 255, alpha: 1.0)
-    @IBInspectable var indicatorColor: UIColor = UIColor(red: 62 / 255, green: 173 / 255, blue: 244 / 255, alpha: 1.0)
+    @IBInspectable var leftBarColor: UIColor = .white
+    @IBInspectable var rightBarColor: UIColor = UIColor(red: 13 / 255, green: 18 / 255, blue: 83 / 255, alpha: 1.0)
+    @IBInspectable var indicatorColor: UIColor = .white
     
     var progress: CGFloat = 0
     
@@ -87,7 +87,6 @@ class CustomSlider: UIControl {
                                      height: 0.07 * self.bounds.height)
     }
     
-    
     //MARK: - Interaction
     
     override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
@@ -122,7 +121,7 @@ class CustomSlider: UIControl {
                 self.indicator.center.x += delta
             }
             if (futureP > self.bounds.width - indicatorWidth/2) {
-                self.indicator.center.x = self.bounds.width - indicatorWidth/2
+                self.indicator.center.x = self.bounds.width - indicatorWidth / 2
             }
             if (futureP < indicatorWidth/2) {
                 self.indicator.center.x = indicatorWidth/2

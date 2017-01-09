@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable
+//@IBDesignable
 class CorneredView: UIView {
     
     @IBInspectable var frameColor: UIColor = .green {
