@@ -259,7 +259,8 @@ extension MainViewController: LivePhotoPickerControllerDelegate {
                         guard let wSelf = self else {
                             return
                         }
-                        let alert = wSelf.defaultAlertViewController(title: "Oops", message: "Please, select live photo")
+                        let alert = wSelf.defaultAlertViewController(title: Localization.oops,
+                                                                     message: Localization.nonLivePhotoAlert)
                         wSelf.present(alert, animated: true, completion: nil)
                     }
                     //hide loader

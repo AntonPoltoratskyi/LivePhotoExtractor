@@ -10,7 +10,6 @@
 		1424C2E81E23829700814324 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1424C2E71E23829700814324 /* UIViewController+Alert.swift */; };
 		1424C2EA1E23B76200814324 /* UIImage+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1424C2E91E23B76200814324 /* UIImage+Rotation.swift */; };
 		1438CBD11E23F89E00A08692 /* UIImage+Watermark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1438CBD01E23F89E00A08692 /* UIImage+Watermark.swift */; };
-		1438CBD31E23F8AC00A08692 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1438CBD21E23F8AC00A08692 /* Constants.swift */; };
 		60095ECB1E23AB04001A87E0 /* CorneredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60095ECA1E23AB04001A87E0 /* CorneredView.swift */; };
 		60095ECD1E23CB65001A87E0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60095ECC1E23CB65001A87E0 /* MainViewController.swift */; };
 		60095ED51E23F340001A87E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60095ECF1E23F340001A87E0 /* Assets.xcassets */; };
@@ -43,7 +42,6 @@
 		1424C2E71E23829700814324 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Alert.swift"; path = "Extensions/UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		1424C2E91E23B76200814324 /* UIImage+Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Rotation.swift"; path = "Extensions/UIImage+Rotation.swift"; sourceTree = "<group>"; };
 		1438CBD01E23F89E00A08692 /* UIImage+Watermark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Watermark.swift"; path = "Extensions/UIImage+Watermark.swift"; sourceTree = "<group>"; };
-		1438CBD21E23F8AC00A08692 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		14EF18FE1E22CD6E007C8C4D /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		60095ECA1E23AB04001A87E0 /* CorneredView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorneredView.swift; sourceTree = "<group>"; };
 		60095ECC1E23CB65001A87E0 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 				60837A841E22A5AA00E0892D /* LivePhotoPlayer.swift */,
 				60837A861E22B5E500E0892D /* LibraryManager.swift */,
 				60837A881E22BB4A00E0892D /* SharingManager.swift */,
-				1438CBD21E23F8AC00A08692 /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -302,7 +299,6 @@
 				1438CBD11E23F89E00A08692 /* UIImage+Watermark.swift in Sources */,
 				60837A8C1E22C0B000E0892D /* CustomSlider.swift in Sources */,
 				60837A811E229E5A00E0892D /* LivePhotoPickerController.swift in Sources */,
-				1438CBD31E23F8AC00A08692 /* Constants.swift in Sources */,
 				1424C2E81E23829700814324 /* UIViewController+Alert.swift in Sources */,
 				60837A891E22BB4A00E0892D /* SharingManager.swift in Sources */,
 				60837A5F1E229CF100E0892D /* AppDelegate.swift in Sources */,
@@ -456,7 +452,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 76RXYZCS9Y;
 				INFOPLIST_FILE = "$(SRCROOT)/Photo Cropper/Resources/Info.plist";
@@ -472,7 +467,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 76RXYZCS9Y;
 				INFOPLIST_FILE = "$(SRCROOT)/Photo Cropper/Resources/Info.plist";
