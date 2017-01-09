@@ -71,7 +71,7 @@ class LivePhotoPlayer: PlayerBehaviour {
         }
         let currentTime = player.currentTime()
         
-        generator.generateCGImagesAsynchronously(forTimes: [NSValue(time: currentTime)]) { (firstTime, image, secondTime, result, error) in
+        generator.generateCGImagesAsynchronously(forTimes: [NSValue(time: currentTime)]) { [weak self] (firstTime, image, secondTime, result, error) in
             
             guard let image = image else {
                 completion(nil, error)
