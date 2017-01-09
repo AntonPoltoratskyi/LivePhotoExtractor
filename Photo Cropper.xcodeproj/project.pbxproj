@@ -18,6 +18,8 @@
 		60095ED81E23F340001A87E0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60095ED41E23F340001A87E0 /* Info.plist */; };
 		60095EDA1E23F429001A87E0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60095ED91E23F429001A87E0 /* Constants.swift */; };
 		60095EDD1E23F457001A87E0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 60095EDF1E23F457001A87E0 /* Localizable.strings */; };
+		60095EE21E2402BD001A87E0 /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60095EE11E2402BD001A87E0 /* TransitionAnimator.swift */; };
+		60095EE41E240A95001A87E0 /* FullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60095EE31E240A95001A87E0 /* FullScreenViewController.swift */; };
 		60837A5F1E229CF100E0892D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60837A5E1E229CF100E0892D /* AppDelegate.swift */; };
 		60837A741E229CF100E0892D /* Photo_CropperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60837A731E229CF100E0892D /* Photo_CropperTests.swift */; };
 		60837A811E229E5A00E0892D /* LivePhotoPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60837A801E229E5A00E0892D /* LivePhotoPickerController.swift */; };
@@ -52,6 +54,8 @@
 		60095ED91E23F429001A87E0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		60095EDE1E23F457001A87E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		60095EE01E23F46E001A87E0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		60095EE11E2402BD001A87E0 /* TransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
+		60095EE31E240A95001A87E0 /* FullScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenViewController.swift; sourceTree = "<group>"; };
 		60837A5B1E229CF100E0892D /* Photo Cropper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photo Cropper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60837A5E1E229CF100E0892D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60837A6F1E229CF100E0892D /* Photo CropperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Photo CropperTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +167,7 @@
 				60837A841E22A5AA00E0892D /* LivePhotoPlayer.swift */,
 				60837A861E22B5E500E0892D /* LibraryManager.swift */,
 				60837A881E22BB4A00E0892D /* SharingManager.swift */,
+				60095EE11E2402BD001A87E0 /* TransitionAnimator.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				60095ECC1E23CB65001A87E0 /* MainViewController.swift */,
+				60095EE31E240A95001A87E0 /* FullScreenViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -293,9 +299,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1424C2EA1E23B76200814324 /* UIImage+Rotation.swift in Sources */,
+				60095EE21E2402BD001A87E0 /* TransitionAnimator.swift in Sources */,
 				60095ECB1E23AB04001A87E0 /* CorneredView.swift in Sources */,
 				60837A871E22B5E500E0892D /* LibraryManager.swift in Sources */,
 				60095ECD1E23CB65001A87E0 /* MainViewController.swift in Sources */,
+				60095EE41E240A95001A87E0 /* FullScreenViewController.swift in Sources */,
 				1438CBD11E23F89E00A08692 /* UIImage+Watermark.swift in Sources */,
 				60837A8C1E22C0B000E0892D /* CustomSlider.swift in Sources */,
 				60837A811E229E5A00E0892D /* LivePhotoPickerController.swift in Sources */,

@@ -28,6 +28,9 @@ class MainViewController: UIViewController {
     @IBOutlet weak var sliderVerticalConstraint: NSLayoutConstraint!
     
     //MARK: - Helpers
+    lazy var animator: TransitionAnimator = {
+        return TransitionAnimator()
+    }()
     
     lazy var livePhotoPickerController: LivePhotoPickerController = {
         let picker = LivePhotoPickerController()
@@ -51,6 +54,7 @@ class MainViewController: UIViewController {
         photoSelection(show: false, false, completion: nil)
         setUpNavBar()
         requestGalleryPermission()
+        addTapGestureRecognizer()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -61,8 +65,28 @@ class MainViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    //MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let fullScreenVC = segue.destination as? FullScreenViewController {
+            fullScreenVC.transitioningDelegate = self
+            //get image and setup
+        }
+    }
+    
     //MARK: - Methods
 
+    func addTapGestureRecognizer() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        contentView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    func imageTapped() {
+        guard let layer = currentLayer else {
+            return
+        }
+        //Move to constants
+        performSegue(withIdentifier: "Details", sender: nil)
+    }
+    
     func initialUI() {
         selectPhotoTitle.text = Localization.selectMediaLabel
         applyColor()
