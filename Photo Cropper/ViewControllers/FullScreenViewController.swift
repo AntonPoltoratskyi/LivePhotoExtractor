@@ -15,10 +15,13 @@ class FullScreenViewController: UIViewController {
             imageView.image = detailsImage
         }
     }
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
     var detailsImage: UIImage?
     
     @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var blurViewTopConstraint: NSLayoutConstraint!
+    
     var isTopBarVisible: Bool {
         return blurViewTopConstraint.constant == 0
     }
@@ -32,6 +35,10 @@ class FullScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.gradiented([.white, UIColor(red: 115 / 255, green: 111 / 255, blue: 148 / 255, alpha: 1.0), .white])
+        [closeButton, shareButton].forEach {
+            $0.image(colored: .white)
+        }
     }
     
     

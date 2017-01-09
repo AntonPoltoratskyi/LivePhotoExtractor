@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-    let duration    = 0.6
+    let duration    = 0.3
     var presenting  = true
     var originFrame = CGRect.zero
     
@@ -54,7 +54,19 @@ extension FullScreenViewController: UIViewControllerTransitioningDelegate {}
 extension MainViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if let layer = currentLayer {
-            animator.originFrame = contentView.convert(layer.frame, to: nil)
+            let frame = contentView.convert(layer.frame, to: nil)
+            let viewFrame = view.frame
+            
+            let widthMultiplier = frame.width / viewFrame.width
+            let heightMultiplier = frame.height / viewFrame.height
+            
+            let maxMultiplier = max(widthMultiplier, heightMultiplier)
+            let finalSize = CGSize(width: viewFrame.width * maxMultiplier,
+                                   height: viewFrame.height * maxMultiplier)
+            let origin = CGPoint(x: frame.origin.x - (finalSize.width - frame.width) / 2,
+                                 y: frame.origin.y - (finalSize.height - frame.height) / 2)
+            
+            animator.originFrame = CGRect(origin: origin, size: finalSize)
         }
         animator.presenting = true
         return animator
