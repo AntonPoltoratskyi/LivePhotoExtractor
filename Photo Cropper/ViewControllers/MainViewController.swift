@@ -64,8 +64,7 @@ class MainViewController: UIViewController {
     //MARK: - Methods
 
     func initialUI() {
-        //LOCALIZED
-        selectPhotoTitle.text = "Select live photo to continue"
+        selectPhotoTitle.text = Localization.selectMediaLabel
         applyColor()
     }
     func applyColor() {
@@ -256,10 +255,12 @@ extension MainViewController: LivePhotoPickerControllerDelegate {
                         self?.showVideo(url)
                         self?.changeUI(photoSelected: true)
                     } else {
-                        //process error
                         self?.changeUI(photoSelected: false)
-                        debugPrint(error ?? "Error")
-                        // show alert "Not a live photo"
+                        guard let wSelf = self else {
+                            return
+                        }
+                        let alert = wSelf.defaultAlertViewController(title: "Oops", message: "Please, select live photo")
+                        wSelf.present(alert, animated: true, completion: nil)
                     }
                     //hide loader
                 }
