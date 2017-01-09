@@ -15,9 +15,9 @@ class CustomSlider: UIControl {
     var leftBar: UIView!
     var rightBar: UIView!
     
-    @IBInspectable var leftBarColor: UIColor = .blue
-    @IBInspectable var rightBarColor: UIColor = .blue
-    @IBInspectable var indicatorColor: UIColor = .blue
+    @IBInspectable var leftBarColor: UIColor = UIColor(red: 62 / 255, green: 173 / 255, blue: 244 / 255, alpha: 1.0)
+    @IBInspectable var rightBarColor: UIColor = UIColor(red: 62 / 255, green: 173 / 255, blue: 244 / 255, alpha: 1.0)
+    @IBInspectable var indicatorColor: UIColor = UIColor(red: 62 / 255, green: 173 / 255, blue: 244 / 255, alpha: 1.0)
     
     var progress: CGFloat = 0
     

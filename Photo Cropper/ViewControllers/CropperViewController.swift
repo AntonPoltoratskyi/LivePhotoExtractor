@@ -24,7 +24,7 @@ class CropperViewController: UIViewController {
     var livePhotoPlayer: PlayerBehaviour?
     var currentLayer: AVPlayerLayer?
     
-    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var contentView: CorneredView!
     @IBOutlet weak var contentSlider: CustomSlider!
     
     var galleryAccessGranted = false
@@ -53,7 +53,8 @@ class CropperViewController: UIViewController {
             return
         }
         let layer = livePhotoPlayer.layer()
-        layer.frame = contentView.bounds
+        layer.frame = contentView.bounds.insetBy(dx: contentView.frameWidth,
+                                                 dy: contentView.frameWidth)
         contentView.layer.addSublayer(layer)
         currentLayer = layer
     }

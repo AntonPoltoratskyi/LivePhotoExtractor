@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1424C2E81E23829700814324 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1424C2E71E23829700814324 /* UIViewController+Alert.swift */; };
 		14EF18FC1E22C716007C8C4D /* CropperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EF18FB1E22C716007C8C4D /* CropperViewController.swift */; };
+		60095ECB1E23AB04001A87E0 /* CorneredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60095ECA1E23AB04001A87E0 /* CorneredView.swift */; };
 		60837A5F1E229CF100E0892D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60837A5E1E229CF100E0892D /* AppDelegate.swift */; };
 		60837A641E229CF100E0892D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60837A621E229CF100E0892D /* Main.storyboard */; };
 		60837A661E229CF100E0892D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60837A651E229CF100E0892D /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 		1424C2E71E23829700814324 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Alert.swift"; path = "Extensions/UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		14EF18FB1E22C716007C8C4D /* CropperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropperViewController.swift; sourceTree = "<group>"; };
 		14EF18FE1E22CD6E007C8C4D /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		60095ECA1E23AB04001A87E0 /* CorneredView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorneredView.swift; sourceTree = "<group>"; };
 		60837A5B1E229CF100E0892D /* Photo Cropper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photo Cropper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60837A5E1E229CF100E0892D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60837A631E229CF100E0892D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				60837A8B1E22C0B000E0892D /* CustomSlider.swift */,
+				60095ECA1E23AB04001A87E0 /* CorneredView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60095ECB1E23AB04001A87E0 /* CorneredView.swift in Sources */,
 				60837A871E22B5E500E0892D /* LibraryManager.swift in Sources */,
 				60837A8C1E22C0B000E0892D /* CustomSlider.swift in Sources */,
 				60837A811E229E5A00E0892D /* LivePhotoPickerController.swift in Sources */,
