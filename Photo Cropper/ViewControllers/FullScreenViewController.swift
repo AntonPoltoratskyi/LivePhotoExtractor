@@ -35,7 +35,10 @@ class FullScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.gradiented([.white, UIColor(red: 115 / 255, green: 111 / 255, blue: 148 / 255, alpha: 1.0), .white])
+        view.gradiented([UIColor(red: 115 / 255, green: 111 / 255, blue: 148 / 255, alpha: 0.7),
+                         .white,
+                         UIColor(red: 115 / 255, green: 111 / 255, blue: 148 / 255, alpha: 0.7)],
+                        shouldBreak: false)
         [closeButton, shareButton].forEach {
             $0.image(colored: .white)
         }

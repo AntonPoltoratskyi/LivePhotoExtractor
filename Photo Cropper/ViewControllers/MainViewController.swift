@@ -24,7 +24,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var selectPhotoButton: UIButton!
     @IBOutlet weak var selectPhotoTitle: UILabel!
     
-    @IBOutlet weak var slider: CustomSlider!
+    @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var sliderVerticalConstraint: NSLayoutConstraint!
     
     //MARK: - Helpers
@@ -56,7 +56,7 @@ class MainViewController: UIViewController {
         requestGalleryPermission()
         addTapGestureRecognizer()
         view.gradiented([UIColor(red: 64 / 255, green: 57 / 255, blue: 130 / 255, alpha: 1.0),
-                              .white])
+                              .white], shouldBreak: true)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -121,8 +121,8 @@ class MainViewController: UIViewController {
             return
         }
         let layer = livePhotoPlayer.layer()
-        layer.frame = contentView.bounds.insetBy(dx: contentView.frameWidth,
-                                                 dy: contentView.frameWidth)
+        layer.frame = contentView.bounds.insetBy(dx: contentView.frameWidth * 2,
+                                                 dy: contentView.frameWidth * 2)
         contentView.layer.addSublayer(layer)
         currentLayer = layer
     }
@@ -131,7 +131,9 @@ class MainViewController: UIViewController {
         photoSelection(show: !photoSelected, true, completion: nil)
         closeButton(setHidden: !photoSelected, true, completion: { [weak self] (finished) in
             self?.navigationButtons(show: photoSelected, true, completion: nil)
-            self?.slider(show: photoSelected, true, completion: nil)
+            self?.slider(show: photoSelected, true, completion: { [weak self] (finished) in
+                self?.slider.setValue(0, animated: true)
+            })
         })
     }
     
@@ -266,11 +268,11 @@ class MainViewController: UIViewController {
             showNotGrantedGalleryAccessAlert()
         }
     }
-    @IBAction func sliderValueChanged(_ sender: CustomSlider) {
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
         guard let livePhotoPlayer = livePhotoPlayer, let duration = livePhotoPlayer.duration else {
             return
         }
-        let neededTime = Double(sender.progress) * duration
+        let neededTime = Double(sender.value) * duration
         do {
             try livePhotoPlayer.move(to: neededTime)
         } catch {
