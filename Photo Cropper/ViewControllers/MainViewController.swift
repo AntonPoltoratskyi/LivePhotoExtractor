@@ -210,7 +210,11 @@ class MainViewController: UIViewController {
         }
         player.captureImage { [weak self] (image, error) in
             if let image = image {
-                let activityController = SharingManager.activityController(with: image)
+                let watermarkedImage = image.addingWatermark(text: Constants.watermarkText,
+                                                             font: Constants.watermarkFont,
+                                                             color: Constants.watermarkColor)
+                
+                let activityController = SharingManager.activityController(with: watermarkedImage)
                 self?.present(activityController, animated: true, completion: nil)
             } else {
                 debugPrint(error ?? "Error")
