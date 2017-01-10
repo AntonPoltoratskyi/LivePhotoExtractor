@@ -202,15 +202,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3bO-g8-s3m">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1YB-w9-ZLQ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <gestureRecognizers/>
+                                <subviews>
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3bO-g8-s3m">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="bJM-6m-LKG" appends="YES" id="fvr-qm-ePB"/>
+                                        </connections>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="3bO-g8-s3m" secondAttribute="trailing" id="9oB-J3-RVx"/>
+                                    <constraint firstItem="3bO-g8-s3m" firstAttribute="leading" secondItem="1YB-w9-ZLQ" secondAttribute="leading" id="PhO-p6-6NI"/>
+                                    <constraint firstItem="3bO-g8-s3m" firstAttribute="centerY" secondItem="1YB-w9-ZLQ" secondAttribute="centerY" placeholder="YES" id="V68-JC-Esg"/>
+                                    <constraint firstAttribute="bottom" secondItem="3bO-g8-s3m" secondAttribute="bottom" id="o8x-b8-YNR"/>
+                                    <constraint firstItem="3bO-g8-s3m" firstAttribute="centerX" secondItem="1YB-w9-ZLQ" secondAttribute="centerX" placeholder="YES" id="ral-66-uaZ"/>
+                                    <constraint firstItem="3bO-g8-s3m" firstAttribute="top" secondItem="1YB-w9-ZLQ" secondAttribute="top" id="s2b-AU-mNn"/>
+                                </constraints>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="bJM-6m-LKG" appends="YES" id="fvr-qm-ePB"/>
-                                    <outletCollection property="gestureRecognizers" destination="A4C-7W-tdY" appends="YES" id="eXj-Bf-Q8F"/>
-                                    <outletCollection property="gestureRecognizers" destination="FZs-cc-KkG" appends="YES" id="Bud-QV-C5y"/>
+                                    <outlet property="delegate" destination="qcV-Sp-zl7" id="BmB-pH-KOZ"/>
                                 </connections>
-                            </imageView>
+                            </scrollView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ue-Gv-FKc">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nzE-sH-hue">
@@ -249,12 +263,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.25052139159999998" green="0.22340458630000001" blue="0.5111610889" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="VsY-Q1-ID0" firstAttribute="top" secondItem="3bO-g8-s3m" secondAttribute="bottom" id="3bd-qZ-Ij8"/>
-                            <constraint firstItem="3bO-g8-s3m" firstAttribute="top" secondItem="YUF-XC-JfD" secondAttribute="top" id="996-ZI-34u"/>
-                            <constraint firstItem="3bO-g8-s3m" firstAttribute="leading" secondItem="YUF-XC-JfD" secondAttribute="leading" id="XZo-yc-0Bj"/>
+                            <constraint firstItem="1YB-w9-ZLQ" firstAttribute="height" secondItem="YUF-XC-JfD" secondAttribute="height" id="6uf-eR-Mrq"/>
+                            <constraint firstItem="1YB-w9-ZLQ" firstAttribute="leading" secondItem="YUF-XC-JfD" secondAttribute="leading" id="AIJ-Lg-T0W"/>
+                            <constraint firstAttribute="bottom" secondItem="1YB-w9-ZLQ" secondAttribute="bottom" id="OrN-nM-jBQ"/>
                             <constraint firstAttribute="trailing" secondItem="9Ue-Gv-FKc" secondAttribute="trailing" id="c9y-5k-orC"/>
+                            <constraint firstAttribute="trailing" secondItem="1YB-w9-ZLQ" secondAttribute="trailing" id="cJ7-7b-yWT"/>
                             <constraint firstItem="9Ue-Gv-FKc" firstAttribute="top" secondItem="YUF-XC-JfD" secondAttribute="top" id="oZ1-zU-3Lf"/>
-                            <constraint firstAttribute="trailing" secondItem="3bO-g8-s3m" secondAttribute="trailing" id="qa3-ed-FNu"/>
                             <constraint firstItem="9Ue-Gv-FKc" firstAttribute="leading" secondItem="YUF-XC-JfD" secondAttribute="leading" id="wmQ-kX-tfG"/>
                         </constraints>
                     </view>
@@ -263,8 +277,11 @@
                         <outlet property="blurViewTopConstraint" destination="oZ1-zU-3Lf" id="TXy-7o-Gz8"/>
                         <outlet property="closeButton" destination="uXR-mB-qED" id="02J-G4-Gm6"/>
                         <outlet property="imageView" destination="3bO-g8-s3m" id="vs6-f3-lBK"/>
-                        <outlet property="pan" destination="FZs-cc-KkG" id="VMy-cA-KAt"/>
-                        <outlet property="pinch" destination="A4C-7W-tdY" id="ort-Lm-H6e"/>
+                        <outlet property="imageViewBottomConstraint" destination="o8x-b8-YNR" id="G6S-pW-CtS"/>
+                        <outlet property="imageViewLeadingConstraint" destination="PhO-p6-6NI" id="Myc-aA-4VE"/>
+                        <outlet property="imageViewTopConstraint" destination="s2b-AU-mNn" id="NBD-pT-cWx"/>
+                        <outlet property="imageViewTrailingConstraint" destination="9oB-J3-RVx" id="0Ga-UE-DT2"/>
+                        <outlet property="scrollView" destination="1YB-w9-ZLQ" id="g0t-3c-U42"/>
                         <outlet property="shareButton" destination="Pap-y3-f76" id="vcc-wg-YYm"/>
                     </connections>
                 </viewController>
@@ -274,16 +291,6 @@
                         <action selector="actionDidTapImageView:" destination="qcV-Sp-zl7" id="aMT-0s-iYY"/>
                     </connections>
                 </tapGestureRecognizer>
-                <pinchGestureRecognizer id="A4C-7W-tdY">
-                    <connections>
-                        <action selector="pinchAction:" destination="qcV-Sp-zl7" id="EgH-Ky-1Jd"/>
-                    </connections>
-                </pinchGestureRecognizer>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="FZs-cc-KkG">
-                    <connections>
-                        <action selector="panAction:" destination="qcV-Sp-zl7" id="35W-Pm-SAF"/>
-                    </connections>
-                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3086" y="827"/>
         </scene>
