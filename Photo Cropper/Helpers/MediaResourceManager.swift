@@ -28,8 +28,9 @@ class MediaResourceManager {
             completion(nil, MediaResourceManagerError.noLivePhoto)
         }
     }
+    
     func requestVideo(for resource: PHAssetResource, completion: @escaping LivePhotoExtractCompletion) {
-        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        let path = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first!
         var videoUrl = URL(fileURLWithPath: path)
         videoUrl = videoUrl.appendingPathComponent(resource.originalFilename)
         if FileManager.default.fileExists(atPath: videoUrl.path) {
@@ -38,6 +39,14 @@ class MediaResourceManager {
         }
         PHAssetResourceManager.default().writeData(for: resource, toFile: videoUrl, options: nil) { (error) in
             completion(videoUrl, error)
+        }
+    }
+    
+    func deleteMedia(_ url: URL) {
+        do {
+            try FileManager.default.removeItem(at: url)
+        } catch {
+            debugPrint(error)
         }
     }
 }

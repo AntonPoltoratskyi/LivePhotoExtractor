@@ -54,7 +54,7 @@ class MainViewController: UIViewController {
         photoSelection(show: false, false, completion: nil)
         setUpNavBar()
         requestGalleryPermission()
-        addTapGestureRecognizer()
+        addGestureRecognizers()
         view.gradiented([UIColor(red: 64 / 255, green: 57 / 255, blue: 130 / 255, alpha: 1.0),
                               .white], shouldBreak: true)
     }
@@ -80,8 +80,11 @@ class MainViewController: UIViewController {
     
     //MARK: - Methods
 
-    func addTapGestureRecognizer() {
+    func addGestureRecognizers() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        //temporary
+        let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(imageTapped))
+        contentView.addGestureRecognizer(pinchRecognizer)
         contentView.addGestureRecognizer(tapGestureRecognizer)
     }
     func imageTapped() {
@@ -257,8 +260,11 @@ class MainViewController: UIViewController {
         }
     }
     @IBAction func closeButtonTouched(_ sender: Any) {
-        currentLayer?.removeFromSuperlayer()
+        if let urlToDelete = livePhotoPlayer?.videoUrl {
+            mediaManager.deleteMedia(urlToDelete)
+        }
         livePhotoPlayer = nil
+        currentLayer?.removeFromSuperlayer()
         changeUI(photoSelected: false)
     }
     @IBAction func selectPhotoButtonTouched(_ sender: Any) {
