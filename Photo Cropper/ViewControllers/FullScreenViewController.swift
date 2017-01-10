@@ -39,6 +39,7 @@ class FullScreenViewController: UIViewController {
     //MARK: - Life Cycle
     
     override func viewDidLoad() {
+        debugPrint(#function)
         super.viewDidLoad()
         view.gradiented([UIColor(red: 115 / 255, green: 111 / 255, blue: 148 / 255, alpha: 0.7),
                          .white,
@@ -49,8 +50,22 @@ class FullScreenViewController: UIViewController {
         }
         pinch.delegate = self
     }
-    
-    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        debugPrint(#function)
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        debugPrint(#function)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        debugPrint(#function)
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        debugPrint(#function)
+    }
     //MARK: - View
     
     func hideTopView() {
