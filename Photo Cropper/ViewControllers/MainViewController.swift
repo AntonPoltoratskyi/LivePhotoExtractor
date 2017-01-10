@@ -14,6 +14,7 @@ import AVFoundation
 class MainViewController: UIViewController {
 
     //MARK: - Outlets
+    @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var videoButton: UIButton!
     @IBOutlet weak var photoButton: UIButton!
     
@@ -106,6 +107,11 @@ class MainViewController: UIViewController {
     }
     func applyColor() {
         [photoButton, videoButton, closeButton].forEach {$0.image(colored: UIColor(red: 64 / 255, green: 57 / 255, blue: 130 / 255, alpha: 1.0))}
+        
+        let originImage = logoImageView.image
+        let tintedImage = originImage?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        logoImageView.image = tintedImage
+        logoImageView.tintColor = UIColor(red: 115 / 255, green: 111 / 255, blue: 148 / 255, alpha: 1.0)
     }
     
     func setUpNavBar() {

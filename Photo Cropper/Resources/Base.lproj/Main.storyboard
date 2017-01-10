@@ -117,17 +117,16 @@
                             <rect key="frame" x="62" y="6" width="128" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#Snaplive" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icE-Ao-jdF">
-                                    <rect key="frame" x="20.5" y="5" width="87.5" height="23.5"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                    <color key="textColor" red="0.4508599043" green="0.43550080060000002" blue="0.58029383420000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Hzr-hX-31o">
+                                    <rect key="frame" x="0.0" y="0.0" width="128" height="33"/>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="icE-Ao-jdF" firstAttribute="centerX" secondItem="nY3-fI-OYZ" secondAttribute="centerX" id="J3U-3i-eat"/>
-                                <constraint firstItem="icE-Ao-jdF" firstAttribute="centerY" secondItem="nY3-fI-OYZ" secondAttribute="centerY" id="tdE-Fa-ZWc"/>
+                                <constraint firstAttribute="trailing" secondItem="Hzr-hX-31o" secondAttribute="trailing" id="NfE-qd-WIf"/>
+                                <constraint firstItem="Hzr-hX-31o" firstAttribute="top" secondItem="nY3-fI-OYZ" secondAttribute="top" id="PP3-jA-Rc7"/>
+                                <constraint firstAttribute="bottom" secondItem="Hzr-hX-31o" secondAttribute="bottom" id="fhB-nv-MlS"/>
+                                <constraint firstItem="Hzr-hX-31o" firstAttribute="leading" secondItem="nY3-fI-OYZ" secondAttribute="leading" id="vUd-3i-gfX"/>
                             </constraints>
                         </view>
                         <rightBarButtonItems>
@@ -177,6 +176,7 @@
                         <outlet property="closeButton" destination="BQx-gM-qd4" id="7Qs-bL-KNv"/>
                         <outlet property="closeButtonHeight" destination="Af7-t4-bnp" id="PFy-jQ-EfN"/>
                         <outlet property="contentView" destination="lg4-hV-R3a" id="qpM-bv-0ad"/>
+                        <outlet property="logoImageView" destination="Hzr-hX-31o" id="yPl-De-93n"/>
                         <outlet property="photoButton" destination="ScW-QQ-SzW" id="ofa-LG-xJc"/>
                         <outlet property="selectPhotoButton" destination="BRj-vX-xUA" id="YCk-Bx-Zd1"/>
                         <outlet property="selectPhotoTitle" destination="qdx-8h-kZ0" id="ssF-tc-FkR"/>
@@ -316,6 +316,7 @@
     <resources>
         <image name="camera" width="128" height="128"/>
         <image name="close" width="16" height="16"/>
+        <image name="logo" width="793" height="156"/>
         <image name="photo" width="16" height="16"/>
         <image name="share" width="16" height="16"/>
         <image name="video" width="16" height="16"/>
