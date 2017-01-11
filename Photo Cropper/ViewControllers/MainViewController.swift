@@ -22,6 +22,11 @@ class MainViewController: UIViewController {
     @IBOutlet weak var closeButtonHeight: NSLayoutConstraint!
     
     @IBOutlet weak var contentView: CorneredView!
+    
+    @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var contentViewWidth: NSLayoutConstraint!
+    
+    
     @IBOutlet weak var selectPhotoButton: UIButton!
     @IBOutlet weak var selectPhotoTitle: UILabel!
     
@@ -61,7 +66,10 @@ class MainViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        photoSelection(show: true, true, completion: nil)
+        
+        if currentLayer == nil {
+            changeUI(photoSelected: false, completion: nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -88,18 +96,6 @@ class MainViewController: UIViewController {
         contentView.addGestureRecognizer(pinchRecognizer)
         contentView.addGestureRecognizer(tapGestureRecognizer)
     }
-    func imageTapped() {
-        guard let player = livePhotoPlayer else { return }
-        guard currentLayer != nil else {
-            return
-        }
-        if let image = player.captureImageSynchronously() {
-            let watermarkedImage = image.addingWatermark(text: Constants.watermarkText,
-                                                         font: Constants.watermarkFont,
-                                                         color: Constants.watermarkColor)
-            self.performSegue(withIdentifier: "Details", sender: watermarkedImage)
-        }
-    }
     
     func initialUI() {
         selectPhotoTitle.text = Localization.selectMediaLabel
@@ -121,32 +117,86 @@ class MainViewController: UIViewController {
         bar?.shadowImage = UIImage()
         bar?.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
     }
-    func showVideo(_ url: URL) {
+    func setupPlayer(_ url: URL) {
+        livePhotoPlayer = LivePhotoPlayer(url)
+    }
+    func showVideo() {
         if currentLayer != nil {
             currentLayer?.removeFromSuperlayer()
         }
-        livePhotoPlayer = LivePhotoPlayer(url)
         guard let livePhotoPlayer = livePhotoPlayer else {
             return
         }
         let layer = livePhotoPlayer.layer()
-        layer.frame = contentView.bounds.insetBy(dx: contentView.frameWidth * 2,
-                                                 dy: contentView.frameWidth * 2)
         contentView.layer.addSublayer(layer)
         currentLayer = layer
     }
     
-    func changeUI(photoSelected: Bool) {
+    func calculateFrameSize(_ estimatedSize: CGSize) -> CGSize {
+        let aspecting = estimatedSize.width / estimatedSize.height
+        let potentialWidth = view.bounds.width * 4 / 5
+        let potentialHeight = potentialWidth / aspecting
+        
+        var finalWidth: CGFloat = potentialWidth
+        var finalHeight: CGFloat = potentialHeight
+        
+        if potentialHeight > view.bounds.height * 4 / 7 {
+            //should resize height
+            finalHeight = view.bounds.height * 4 / 7
+            finalWidth = potentialWidth * finalHeight / potentialHeight
+        }
+        
+        return CGSize(width: finalWidth, height: finalHeight)
+    }
+    
+    //MARK: - Animations
+    
+    func changeUI(photoSelected: Bool, completion: ((Bool) -> Void)?) {
         photoSelection(show: !photoSelected, true, completion: nil)
         closeButton(setHidden: !photoSelected, true, completion: { [weak self] (finished) in
             self?.navigationButtons(show: photoSelected, true, completion: nil)
             self?.slider(show: photoSelected, true, completion: { [weak self] (finished) in
                 self?.slider.setValue(0, animated: true)
             })
+            guard let wSelf = self else {
+                return
+            }
+            var frameSize = CGSize(width: wSelf.view.bounds.width * 4 / 5,
+                                   height: wSelf.view.bounds.height * 4 / 7)
+            if photoSelected {
+                if let emptyImage = wSelf.livePhotoPlayer?.captureImageSynchronously() {
+                    frameSize = emptyImage.size
+                }
+            }
+            wSelf.resizeContentView(to: frameSize,
+                                    true,
+                                    completion: completion)
         })
     }
     
-    //MARK: - Animations
+    func resizeContentView(to estimatedSize: CGSize, _ animated: Bool, completion: ((Bool) -> Void)?) {
+        func updateLayouts() {
+            contentView.setNeedsDisplay()
+            view.layoutIfNeeded()
+            currentLayer?.frame = contentView.bounds.insetBy(dx: contentView.frameWidth * 2,
+                                                          dy: contentView.frameWidth * 2)
+        }
+        let finalSize = calculateFrameSize(estimatedSize)
+        contentViewWidth.constant = finalSize.width
+        contentViewHeight.constant = finalSize.height
+        if animated {
+            UIView.animate(withDuration: 0.3,
+                           delay: 0,
+                           options: .curveEaseIn,
+                           animations: {
+                            updateLayouts()
+            }, completion: completion)
+        } else {
+            updateLayouts()
+            completion?(true)
+        }
+    }
+    
     func navigationButtons(show: Bool, _ animated: Bool, completion: ((Bool) -> Void)?) {
         if !show {
             hideNavigationButtons()
@@ -239,6 +289,20 @@ class MainViewController: UIViewController {
     }
     
     //MARK: - Actions
+    
+    func imageTapped() {
+        guard let player = livePhotoPlayer else { return }
+        guard currentLayer != nil else {
+            return
+        }
+        if let image = player.captureImageSynchronously() {
+            let watermarkedImage = image.addingWatermark(text: Constants.watermarkText,
+                                                         font: Constants.watermarkFont,
+                                                         color: Constants.watermarkColor)
+            self.performSegue(withIdentifier: "Details", sender: watermarkedImage)
+        }
+    }
+    
     @IBAction func videoButtonTouched(_ sender: Any) {
         guard let player = livePhotoPlayer else {
             //handle somehow
@@ -271,7 +335,7 @@ class MainViewController: UIViewController {
         }
         livePhotoPlayer = nil
         currentLayer?.removeFromSuperlayer()
-        changeUI(photoSelected: false)
+        changeUI(photoSelected: false, completion: nil)
     }
     @IBAction func selectPhotoButtonTouched(_ sender: Any) {
         if galleryAccessGranted {
@@ -300,10 +364,11 @@ extension MainViewController: LivePhotoPickerControllerDelegate {
             self?.mediaManager.process(info) { [weak self] (url, error) in
                 DispatchQueue.main.async {
                     if let url = url {
-                        self?.showVideo(url)
-                        self?.changeUI(photoSelected: true)
+                        self?.setupPlayer(url)
+                        self?.changeUI(photoSelected: true, completion: nil)
+                        self?.showVideo()
                     } else {
-                        self?.changeUI(photoSelected: false)
+                        self?.changeUI(photoSelected: false, completion: nil)
                         guard let wSelf = self else {
                             return
                         }
@@ -318,7 +383,7 @@ extension MainViewController: LivePhotoPickerControllerDelegate {
     }
     func pickerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true) { [weak self] in
-            self?.changeUI(photoSelected: false)
+            self?.changeUI(photoSelected: false, completion: nil)
         }
     }
 }

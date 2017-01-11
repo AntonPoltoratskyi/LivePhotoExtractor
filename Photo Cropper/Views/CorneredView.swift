@@ -31,6 +31,13 @@ class CorneredView: UIView {
             setNeedsDisplay()
         }
     }
+    
+    override var frame: CGRect {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    
     override func draw(_ rect: CGRect) {
         if !showFrame {
             return
