@@ -167,6 +167,9 @@ class MainViewController: UIViewController {
                 if let emptyImage = wSelf.livePhotoPlayer?.captureImageSynchronously() {
                     frameSize = emptyImage.size
                 }
+            } else {
+                self?.livePhotoPlayer = nil
+                self?.currentLayer?.removeFromSuperlayer()
             }
             wSelf.resizeContentView(to: frameSize,
                                     true,
@@ -273,6 +276,7 @@ class MainViewController: UIViewController {
             completion?(true)
         }
     }
+    
     func photoSelection(show: Bool, _ animated: Bool, completion: ((Bool) -> Void)?) {
         func photoSelection(show: Bool) {
             selectPhotoButton.isHidden = !show
@@ -311,6 +315,7 @@ class MainViewController: UIViewController {
         let activityController = SharingManager.activityController(with: player.videoUrl)
         present(activityController, animated: true, completion: nil)
     }
+    
     @IBAction func photoButtonTouched(_ sender: Any) {
         guard let player = livePhotoPlayer else {
             //handle somehow
@@ -329,14 +334,14 @@ class MainViewController: UIViewController {
             }
         }
     }
+    
     @IBAction func closeButtonTouched(_ sender: Any) {
         if let urlToDelete = livePhotoPlayer?.videoUrl {
             mediaManager.deleteMedia(urlToDelete)
         }
-        livePhotoPlayer = nil
-        currentLayer?.removeFromSuperlayer()
         changeUI(photoSelected: false, completion: nil)
     }
+    
     @IBAction func selectPhotoButtonTouched(_ sender: Any) {
         if galleryAccessGranted {
             present(livePhotoPickerController.picker, animated: true, completion: nil)
@@ -344,6 +349,7 @@ class MainViewController: UIViewController {
             showNotGrantedGalleryAccessAlert()
         }
     }
+    
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         guard let livePhotoPlayer = livePhotoPlayer, let duration = livePhotoPlayer.duration else {
             return
@@ -365,8 +371,8 @@ extension MainViewController: LivePhotoPickerControllerDelegate {
                 DispatchQueue.main.async {
                     if let url = url {
                         self?.setupPlayer(url)
-                        self?.changeUI(photoSelected: true, completion: nil)
                         self?.showVideo()
+                        self?.changeUI(photoSelected: true, completion: nil)
                     } else {
                         self?.changeUI(photoSelected: false, completion: nil)
                         guard let wSelf = self else {
