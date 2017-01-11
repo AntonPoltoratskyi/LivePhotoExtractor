@@ -264,10 +264,10 @@ class MainViewController: UIViewController {
         }
         slider(show: show)
         if animated {
-            UIView.animate(withDuration: 1.2,
+            UIView.animate(withDuration: 1.0,
                            delay: 0,
-                           usingSpringWithDamping: 0.4,
-                           initialSpringVelocity: 0.1,
+                           usingSpringWithDamping: 0.2,
+                           initialSpringVelocity: 0.5,
                            options: .curveEaseInOut,
                            animations: {
                             self.view.layoutIfNeeded()
