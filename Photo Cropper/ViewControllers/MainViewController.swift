@@ -238,7 +238,7 @@ class MainViewController: UIViewController {
     }
     
     func closeButton(setHidden hidden: Bool, _ animated: Bool, completion: ((Bool) -> Void)?) {
-        let constraintHeight: CGFloat = hidden ? 0 : 40
+        let constraintHeight: CGFloat = hidden ? 0 : 24
         if !animated {
             closeButton.isHidden = hidden
             closeButtonHeight.constant = constraintHeight
