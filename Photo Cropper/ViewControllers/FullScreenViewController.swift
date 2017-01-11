@@ -79,6 +79,7 @@ class FullScreenViewController: UIViewController {
     //MARK: - Actions
     
     @IBAction func actionDidTapCloseButton(_ sender: Any) {
+        self.updateMinZoomScale(for: self.scrollView.bounds.size, animated: true)
         dismiss(animated: true, completion: nil)
     }
     
@@ -97,7 +98,7 @@ class FullScreenViewController: UIViewController {
     
     //MARK: - Image Zooming
     
-    func updateMinZoomScale(for size: CGSize) {
+    func updateMinZoomScale(for size: CGSize, animated: Bool = false) {
         
         let widthScale: CGFloat = size.width / self.imageView!.bounds.size.width
         let heightScale: CGFloat = size.height / self.imageView!.bounds.size.height
@@ -105,7 +106,7 @@ class FullScreenViewController: UIViewController {
         let minScale: CGFloat = min(widthScale, heightScale)
         
         self.scrollView.minimumZoomScale = minScale
-        self.scrollView.zoomScale = minScale
+        self.scrollView.setZoomScale(minScale, animated: animated)
     }
     
     func updateConstraints(for size: CGSize) {
