@@ -61,7 +61,7 @@ class LivePhotoPlayer: PlayerBehaviour {
         guard let duration = duration, duration >= seconds else {
             throw LivePhotoPlayerError.wrongTime
         }
-        let time = CMTime(seconds: seconds, preferredTimescale: 600000)
+        let time = CMTime(seconds: seconds, preferredTimescale: 60000)
         player.seek(to: time, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
     }
     

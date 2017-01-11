@@ -354,7 +354,8 @@ class MainViewController: UIViewController {
         guard let livePhotoPlayer = livePhotoPlayer, let duration = livePhotoPlayer.duration else {
             return
         }
-        let neededTime = Double(sender.value) * duration
+        let multiplier = sender.value == 1.0 ? 0.999 : sender.value
+        let neededTime = Double(multiplier) * duration
         do {
             try livePhotoPlayer.move(to: neededTime)
         } catch {
