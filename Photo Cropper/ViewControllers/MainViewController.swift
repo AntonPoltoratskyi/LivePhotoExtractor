@@ -134,7 +134,7 @@ class MainViewController: UIViewController {
     
     func calculateFrameSize(_ estimatedSize: CGSize) -> CGSize {
         let aspecting = estimatedSize.width / estimatedSize.height
-        let potentialWidth = view.bounds.width * 4 / 5
+        let potentialWidth = view.bounds.width * 6 / 7
         let potentialHeight = potentialWidth / aspecting
         
         var finalWidth: CGFloat = potentialWidth
@@ -161,7 +161,7 @@ class MainViewController: UIViewController {
             guard let wSelf = self else {
                 return
             }
-            var frameSize = CGSize(width: wSelf.view.bounds.width * 4 / 5,
+            var frameSize = CGSize(width: wSelf.view.bounds.width * 6 / 7,
                                    height: wSelf.view.bounds.height * 4 / 7)
             if photoSelected {
                 if let emptyImage = wSelf.livePhotoPlayer?.captureImageSynchronously() {
