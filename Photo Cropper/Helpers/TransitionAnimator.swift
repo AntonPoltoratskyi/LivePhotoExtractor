@@ -9,13 +9,27 @@
 import Foundation
 import UIKit
 
-class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-    let duration    = 0.3
+class TransitionAnimator: UIPercentDrivenInteractiveTransition, UIViewControllerAnimatedTransitioning {
+    
+    let animationDuration    = 0.3
     var presenting  = true
     var originFrame = CGRect.zero
     
+    var enterPanGestureRecognizer: UIPanGestureRecognizer!
+    var sourceViewController: UIViewController! {
+        didSet {
+            enterPanGestureRecognizer = UIPanGestureRecognizer(target: self,
+                                                               action: #selector(handlePanGesture(pan:)))
+            sourceViewController.view.addGestureRecognizer(enterPanGestureRecognizer)
+        }
+    }
+    fileprivate var isInteractive = false
+    
+    
+    //MARK: - UIViewControllerAnimatedTransitioning
+    
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return duration
+        return animationDuration
     }
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
@@ -39,7 +53,7 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         }
         containerView.addSubview(toView)
         containerView.bringSubview(toFront: mainView)
-        UIView.animate(withDuration: duration,
+        UIView.animate(withDuration: animationDuration,
                        delay: 0,
                        options: .curveEaseOut,
                        animations: { 
@@ -49,9 +63,43 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             transitionContext.completeTransition(finished)
         }
     }
+    
+    
+    
+    func handlePanGesture(pan: UIPanGestureRecognizer) {
+        
+        let translation = pan.translation(in: pan.view)
+        
+        let percentageComplete: CGFloat = abs(translation.y / pan.view!.bounds.height)
+        print("percentage complete : \(percentageComplete)")
+        
+        switch pan.state {
+        case .began:
+            self.isInteractive = true
+            self.sourceViewController.dismiss(animated: true, completion: nil)
+        case .changed:
+            self.update(percentageComplete)
+        default:
+            self.isInteractive = false
+            self.finish()
+            if percentageComplete > 0.5 {
+                self.finish()
+            } else {
+                self.cancel()
+            }
+        }
+    }
 }
+
+
+//MARK: - UIViewControllerTransitioningDelegate
+
 extension FullScreenViewController: UIViewControllerTransitioningDelegate {}
+
 extension MainViewController: UIViewControllerTransitioningDelegate {
+    
+    //MARK: - Animated transitioning
+    
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if let layer = currentLayer {
             let frame = contentView.convert(layer.frame, to: nil)
@@ -74,5 +122,15 @@ extension MainViewController: UIViewControllerTransitioningDelegate {
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         animator.presenting = false
         return animator
+    }
+    
+    //MARK: - Interactive transitioning
+    
+    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return self.animator.isInteractive ? self.animator : nil
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return self.animator.isInteractive ? self.animator : nil
     }
 }

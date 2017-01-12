@@ -84,6 +84,7 @@ class MainViewController: UIViewController {
             if let image = sender as? UIImage {
                 fullScreenVC.setup(image)
             }
+            self.animator.sourceViewController = fullScreenVC
         }
     }
     
