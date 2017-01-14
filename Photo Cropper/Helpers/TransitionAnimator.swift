@@ -81,10 +81,10 @@ class TransitionAnimator: UIPercentDrivenInteractiveTransition, UIViewController
             self.update(percentageComplete)
         default:
             self.isInteractive = false
-            self.finish()
             if percentageComplete > 0.5 {
                 self.finish()
             } else {
+                self.update(0.0)
                 self.cancel()
             }
         }
