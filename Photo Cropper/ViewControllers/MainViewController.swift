@@ -82,7 +82,7 @@ class MainViewController: UIViewController {
             fullScreenVC.transitioningDelegate = self
             //get image and setup
             if let image = sender as? UIImage {
-                fullScreenVC.setup(image)
+                fullScreenVC.setup(with: image)
             }
             self.animator.sourceViewController = fullScreenVC
         }

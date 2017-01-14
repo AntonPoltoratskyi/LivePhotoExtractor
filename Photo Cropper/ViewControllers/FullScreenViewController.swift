@@ -34,7 +34,7 @@ class FullScreenViewController: UIViewController {
         return blurViewTopConstraint.constant == 0
     }
     
-    func setup(_ image: UIImage) {
+    func setup(with image: UIImage) {
         self.detailsImage = image
     }
     

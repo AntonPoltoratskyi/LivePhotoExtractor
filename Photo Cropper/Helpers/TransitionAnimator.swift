@@ -31,6 +31,7 @@ class TransitionAnimator: UIPercentDrivenInteractiveTransition, UIViewController
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return animationDuration
     }
+    
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
         let toView = transitionContext.view(forKey: .to)!
@@ -69,13 +70,13 @@ class TransitionAnimator: UIPercentDrivenInteractiveTransition, UIViewController
     }
     
     
+    //MARK: - Pan Gesture
     
     func handlePanGesture(pan: UIPanGestureRecognizer) {
         
         let translation = pan.translation(in: pan.view)
         
         let percentageComplete: CGFloat = abs(translation.y / pan.view!.bounds.height)
-        print("percentage complete : \(percentageComplete)")
         
         switch pan.state {
         case .began:
@@ -100,13 +101,12 @@ class TransitionAnimator: UIPercentDrivenInteractiveTransition, UIViewController
 
 //MARK: - UIViewControllerTransitioningDelegate
 
-extension FullScreenViewController: UIViewControllerTransitioningDelegate {}
-
 extension MainViewController: UIViewControllerTransitioningDelegate {
     
-    //MARK: - Animated transitioning
+    //MARK: Animated transitioning
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
         if let layer = currentLayer {
             let frame = contentView.convert(layer.frame, to: nil)
             let viewFrame = view.frame
@@ -120,17 +120,17 @@ extension MainViewController: UIViewControllerTransitioningDelegate {
             let origin = CGPoint(x: frame.origin.x - (finalSize.width - frame.width) / 2,
                                  y: frame.origin.y - (finalSize.height - frame.height) / 2)
             
-            animator.originFrame = CGRect(origin: origin, size: finalSize)
+            self.animator.originFrame = CGRect(origin: origin, size: finalSize)
         }
-        animator.presenting = true
-        return animator
+        self.animator.presenting = true
+        return self.animator
     }
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        animator.presenting = false
-        return animator
+        self.animator.presenting = false
+        return self.animator
     }
     
-    //MARK: - Interactive transitioning
+    //MARK: Interactive transitioning
     
     func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return self.animator.isInteractive ? self.animator : nil
