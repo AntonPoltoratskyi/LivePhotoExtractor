@@ -53,10 +53,14 @@ class TransitionAnimator: UIPercentDrivenInteractiveTransition, UIViewController
         }
         containerView.addSubview(toView)
         containerView.bringSubview(toFront: mainView)
+        
+        mainView.alpha = presenting ? 0 : 1
+        
         UIView.animate(withDuration: animationDuration,
                        delay: 0,
                        options: .curveEaseOut,
-                       animations: { 
+                       animations: {
+                        mainView.alpha = self.presenting ? 1 : 0
                         mainView.transform = self.presenting ? CGAffineTransform.identity : scaling
                         mainView.center = CGPoint(x: finalFrame.midX, y: finalFrame.midY)
         }) { (finished) in
@@ -78,12 +82,14 @@ class TransitionAnimator: UIPercentDrivenInteractiveTransition, UIViewController
             self.isInteractive = true
             self.sourceViewController.dismiss(animated: true, completion: nil)
         case .changed:
+            self.sourceViewController.view.alpha = 1 - percentageComplete
             self.update(percentageComplete)
         default:
             self.isInteractive = false
             if percentageComplete > 0.5 {
                 self.finish()
             } else {
+                self.sourceViewController.view.alpha = 1
                 self.update(0.0)
                 self.cancel()
             }
