@@ -43,6 +43,8 @@ class LivePhotoPlayer: PlayerBehaviour {
         }
         let generator = AVAssetImageGenerator(asset: asset)
         
+        generator.appliesPreferredTrackTransform = true
+        
         generator.requestedTimeToleranceBefore = kCMTimeZero
         generator.requestedTimeToleranceAfter = kCMTimeZero
         
