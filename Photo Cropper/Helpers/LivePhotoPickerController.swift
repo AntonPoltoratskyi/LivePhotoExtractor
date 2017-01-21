@@ -21,7 +21,7 @@ class LivePhotoPickerController: NSObject {
     
     lazy var picker: UIImagePickerController = {
         let picker = UIImagePickerController()
-        picker.sourceType = .photoLibrary
+        picker.sourceType = .savedPhotosAlbum
         picker.allowsEditing = false
         let mediaTypes = [kUTTypeImage, kUTTypeLivePhoto]
         picker.mediaTypes = mediaTypes as [String]
