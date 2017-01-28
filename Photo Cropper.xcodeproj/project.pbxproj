@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14050A2E1E3D1C2500F0B4C1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 14050A301E3D1C2500F0B4C1 /* InfoPlist.strings */; };
 		1424C2E81E23829700814324 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1424C2E71E23829700814324 /* UIViewController+Alert.swift */; };
 		1424C2EA1E23B76200814324 /* UIImage+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1424C2E91E23B76200814324 /* UIImage+Rotation.swift */; };
 		1438CBD11E23F89E00A08692 /* UIImage+Watermark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1438CBD01E23F89E00A08692 /* UIImage+Watermark.swift */; };
@@ -41,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14050A2F1E3D1C2500F0B4C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		14050A311E3D1C2800F0B4C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1424C2E71E23829700814324 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Alert.swift"; path = "Extensions/UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		1424C2E91E23B76200814324 /* UIImage+Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Rotation.swift"; path = "Extensions/UIImage+Rotation.swift"; sourceTree = "<group>"; };
 		1438CBD01E23F89E00A08692 /* UIImage+Watermark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Watermark.swift"; path = "Extensions/UIImage+Watermark.swift"; sourceTree = "<group>"; };
@@ -115,6 +118,7 @@
 				60095ED41E23F340001A87E0 /* Info.plist */,
 				60095ED91E23F429001A87E0 /* Constants.swift */,
 				60095EDF1E23F457001A87E0 /* Localizable.strings */,
+				14050A301E3D1C2500F0B4C1 /* InfoPlist.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -277,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				60095EDD1E23F457001A87E0 /* Localizable.strings in Resources */,
+				14050A2E1E3D1C2500F0B4C1 /* InfoPlist.strings in Resources */,
 				60095ED71E23F340001A87E0 /* Main.storyboard in Resources */,
 				60095ED81E23F340001A87E0 /* Info.plist in Resources */,
 				60095ED61E23F340001A87E0 /* LaunchScreen.storyboard in Resources */,
@@ -335,6 +340,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		14050A301E3D1C2500F0B4C1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14050A2F1E3D1C2500F0B4C1 /* Base */,
+				14050A311E3D1C2800F0B4C1 /* ru */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		60095ED01E23F340001A87E0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
