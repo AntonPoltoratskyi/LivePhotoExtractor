@@ -5,3 +5,5 @@
   Created by Anton Poltoratskyi on 28.01.17.
   Copyright © 2017 Gleb Radchenko. All rights reserved.
 */
+
+"NSPhotoLibraryUsageDescription" = "Please, provide permissions to the app for processing live photo";
